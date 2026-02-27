@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama Entidad-Relación - Gestión Escolar (Edición Pedagógica)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        .attribute-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 1.25rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            transition: background-color 0.2s;
+            color: #475569;
+        }
+
+        .attribute-row:last-child {
+            border-bottom: none;
+        }
+
+        .attribute-row:hover {
+            background-color: #f1f5f9;
+        }
+
+        .pk-indicator {
+            color: #d97706;
+            font-weight: 800;
+            font-size: 0.70rem;
+            align-self: center;
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .fk-indicator {
+            color: #64748b;
+            font-weight: 800;
+            font-size: 0.70rem;
+            align-self: center;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .column-title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* SVG Overlays */
+        #svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .connection-line {
+            fill: none;
+            stroke: #94a3b8;
+            stroke-width: 3;
+            stroke-dasharray: 8;
+            animation: dash 40s linear infinite;
+            filter: drop-shadow(0 2px 2px rgba(148, 163, 184, 0.2));
+        }
+
+        .connection-line-1-1 {
+            stroke: #38bdf8;
+            stroke-dasharray: none;
+            filter: drop-shadow(0 2px 3px rgba(56, 189, 248, 0.3));
+        }
+
+        .cardinality-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            fill: #1e293b;
+        }
+
+        .connection-text {
+            fill: #64748b;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
+        }
+
+        #er-diagram-container {
+            position: relative;
+            padding: 2.5rem;
+            border-radius: 16px;
+            background-color: #ffffff;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: white;
+            }
+
+            #download-btn {
+                display: none;
+            }
+
+            #svg-container {
+                position: absolute;
+            }
+
+            #er-diagram-container {
+                box-shadow: none !important;
+                border: none !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .category-header {
+            color: #64748b;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.75rem 1.25rem 0.25rem 1.25rem;
+            border-bottom: 1px dashed #cbd5e1;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen p-4 md:p-8 flex flex-col items-center overflow-x-hidden">
+
+    <div class="w-full max-w-[1400px] relative mx-auto mb-16 shadow-xl rounded-2xl border border-slate-200 bg-white"
+        id="er-export-wrapper">
+
+        <div id="er-diagram-container" class="w-full">
+            <div class="mb-10 text-center">
+                <h1 class="text-4xl font-extrabold text-slate-800 tracking-tight">Arquitectura de Datos: <span
+                        class="text-sky-600">ERP Escolar</span></h1>
+                <p class="text-slate-500 mt-3 font-medium text-lg">Modelo Normalizado de Admisión, Alumnado y
+                    Facturación</p>
+            </div>
+
+            <svg id="svg-container"></svg>
+
+            <!-- 3 Columns Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 relative z-20">
+
+                <!-- COLUMNA 1: SOLICITUD INICIAL -->
+                <div class="flex flex-col gap-16 flex-1">
+                    <h2 class="column-title">
+                        <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        1. Captación Inicial
+                    </h2>
+
+                    <!-- Table: Solicitud_Cupo -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-solicitud">
+                        <div class="bg-sky-500 px-5 py-4 font-bold text-white flex gap-3 items-center group">
+                            <svg class="w-5 h-5 text-sky-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>Solicitud_Cupo</span>
+                            <span class="ml-auto text-xs bg-sky-600 px-2 py-1 rounded-full border border-sky-400">Tabla
+                                Puente</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_solicitud</span>
+                                <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span>
+                                <span>id_representante</span> <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span class="font-medium">fecha_creacion</span>
+                                <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span class="font-medium">estado_solicitud</span>
+                                <span></span>
+                            </div>
+
+                            <div class="category-header text-sky-600">[ Datos Básicos del Aspirante ]</div>
+                            <div class="attribute-row"><span></span> <span>nombres</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>apellidos</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>fecha_nacimiento</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>sexo</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>grado_a_cursar</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>colegio_procedencia</span> <span></span>
+                            </div>
+
+                            <div class="category-header text-sky-600">[ Vínculos ]</div>
+                            <div class="attribute-row"><span></span> <span>parentesco_representante</span> <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table: Documento_Digital -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-documento">
+                        <div class="bg-slate-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                            <svg class="w-5 h-5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
+                                </path>
+                            </svg>
+                            <span>Documento_Digital</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_documento</span>
+                                <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span>id_solicitud</span>
+                                <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span>tipo_documento</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>url_archivo</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>validado</span> <span></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 2: REPRESENTANTE / FACTURACIÓN -->
+                <div class="flex flex-col gap-16 flex-1 border-l-2 border-r-2 border-slate-100 lg:px-6">
+                    <h2 class="column-title">
+                        <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        2. Personas y Finanzas
+                    </h2>
+
+                    <!-- Table: Representante -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-representante">
+                        <div class="bg-emerald-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                            <svg class="w-5 h-5 text-emerald-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <span>Representante</span>
+                            <span
+                                class="ml-auto text-xs bg-emerald-600 px-2 py-1 rounded-full border border-emerald-400">Cuenta
+                                Base</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span>
+                                <span>id_representante</span> <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span
+                                    class="font-medium text-slate-800">cedula</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>nombres</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>apellidos</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>nacionalidad</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>correo_electronico</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>celular</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>telefonos (hab, ofic)</span> <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span>direccion_habitacion</span> <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span>profesion_ocupacion</span> <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span>empresa_trabajo</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>nivel_educativo</span> <span></span></div>
+                        </div>
+                    </div>
+
+                    <!-- Table: Datos_Facturacion -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-datos-facturacion">
+                        <div class="bg-teal-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                            <svg class="w-5 h-5 text-teal-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                                </path>
+                            </svg>
+                            <span>Datos_Facturacion</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span>
+                                <span>id_datos_facturacion</span> <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span>
+                                <span>id_representante</span> <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span>razon_social</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span
+                                    class="font-medium text-slate-800">rif_cedula</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>direccion_fiscal</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>correo_electronico_facturacion</span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- COLUMNA 3: ALUMNO Y TRANSACCIONAL -->
+                <div class="flex flex-col gap-16 flex-1">
+                    <h2 class="column-title">
+                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222">
+                            </path>
+                        </svg>
+                        3. Alumnado y Académico
+                    </h2>
+
+                    <!-- Table: Alumno -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-alumno">
+                        <div class="bg-violet-600 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                            <svg class="w-5 h-5 text-violet-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                            <span>Alumno</span>
+                            <span
+                                class="ml-auto text-xs bg-violet-700 px-2 py-1 rounded-full border border-violet-500">Maestro
+                                Permanente</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_alumno</span> <span
+                                    class="w-4"></span></div>
+                            <div class="attribute-row"><span></span> <span
+                                    class="font-medium text-slate-800">cedula_escolar</span> <span></span></div>
+
+                            <div class="category-header text-violet-600">[ Heredado de Solicitud ]</div>
+                            <div class="attribute-row"><span></span> <span class="italic">nombres</span> <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span class="italic">apellidos</span> <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span class="italic">fecha_nacimiento</span>
+                                <span></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span class="italic">sexo</span> <span></span>
+                            </div>
+
+                            <div class="category-header text-violet-600">[ Fase 2: Médico ]</div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span
+                                    class="text-slate-400">ficha_medica_id (Tentativo)</span> <span class="w-4"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table: Inscripcion -->
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                        id="card-inscripcion">
+                        <div class="bg-rose-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                            <svg class="w-5 h-5 text-rose-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                                </path>
+                            </svg>
+                            <span>Inscripcion</span>
+                            <span
+                                class="ml-auto text-xs bg-rose-600 px-2 py-1 rounded-full border border-rose-400">Histórico
+                                Escolar</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_inscripcion</span>
+                                <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span>id_alumno</span> <span
+                                    class="w-4"></span></div>
+                            <div class="attribute-row"><span class="fk-indicator">FK</span>
+                                <span>id_datos_facturacion</span> <span class="w-4"></span>
+                            </div>
+                            <div class="attribute-row"><span></span> <span
+                                    class="font-medium text-slate-800">id_periodo_academico</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>monto_total</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>estatus_pago</span> <span></span></div>
+                            <div class="attribute-row"><span></span> <span>fecha_pago_confirmado</span> <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Download Button -->
+    <button id="download-btn"
+        class="fixed bottom-8 right-8 bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white shadow-xl shadow-indigo-500/30 px-6 py-4 rounded-full font-extrabold text-lg transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center gap-3 z-50 border-2 border-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Descargar Modelo PDF
+    </button>
+
+    <!-- html2pdf JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // Draw SVG Connections
+        function drawLine(startElId, endElId, svgContainerId, cardinality, labelStr = "", is1to1 = false, curveExtraY = 0) {
+            const startEl = document.getElementById(startElId);
+            const endEl = document.getElementById(endElId);
+            const svgContainer = document.getElementById(svgContainerId);
+
+            if (!startEl || !endEl || !svgContainer) return;
+
+            const containerRect = svgContainer.getBoundingClientRect();
+            const startRect = startEl.getBoundingClientRect();
+            const endRect = endEl.getBoundingClientRect();
+
+            // Calculate center points of the cards
+            const x1 = startRect.left - containerRect.left + (startRect.width / 2);
+            const y1 = startRect.top - containerRect.top + (startRect.height / 2);
+            const x2 = endRect.left - containerRect.left + (endRect.width / 2);
+            const y2 = endRect.top - containerRect.top + (endRect.height / 2);
+
+            const curveOffset = Math.abs(x1 - x2) * 0.4;
+            let d = '';
+
+            let textX = 0;
+            let textY = 0;
+
+            if (x1 < x2 && Math.abs(y1 - y2) < 300) {
+                // Left to Right
+                const r1 = startRect.right - containerRect.left;
+                const l2 = endRect.left - containerRect.left;
+                d = `M ${r1},${y1} C ${r1 + curveOffset},${y1 + curveExtraY} ${l2 - curveOffset},${y2 + curveExtraY} ${l2},${y2}`;
+
+                textX = (r1 + l2) / 2;
+                textY = ((y1 + y2) / 2) + (curveExtraY * 0.75) - 15;
+            } else if (x1 > x2 && Math.abs(y1 - y2) < 300) {
+                // Right to Left
+                const l1 = startRect.left - containerRect.left;
+                const r2 = endRect.right - containerRect.left;
+                d = `M ${l1},${y1} C ${l1 - curveOffset},${y1 + curveExtraY} ${r2 + curveOffset},${y2 + curveExtraY} ${r2},${y2}`;
+
+                textX = (l1 + r2) / 2;
+                textY = ((y1 + y2) / 2) + (curveExtraY * 0.75) - 15;
+            } else {
+                // Vertical Stack
+                const yOffset = 40;
+                let fromY = y1 < y2 ? startRect.bottom - containerRect.top : startRect.top - containerRect.top;
+                let toY = y1 < y2 ? endRect.top - containerRect.top : endRect.bottom - containerRect.top;
+
+                if (y1 < y2) { // going down
+                    d = `M ${x1},${fromY} C ${x1},${fromY + yOffset} ${x2},${toY - yOffset} ${x2},${toY}`;
+                } else { // going up
+                    d = `M ${x1},${fromY} C ${x1},${fromY - yOffset} ${x2},${toY + yOffset} ${x2},${toY}`;
+                }
+
+                textX = Math.abs(x1 - x2) < 50 ? x1 + 20 : (x1 + x2) / 2;
+                textY = (fromY + toY) / 2;
+            }
+
+            const pathClass = is1to1 ? "connection-line connection-line-1-1" : "connection-line";
+            const path = `<path d="${d}" class="${pathClass}" />`;
+
+            svgContainer.innerHTML += path;
+
+            // Render labels with opaque solid background for Light mode
+            let labelGroup = '';
+            if (cardinality || labelStr) {
+                // Background block
+                const rectWidth = cardinality.length > 3 ? 60 : 40;
+                labelGroup += `<rect x="${textX - (rectWidth / 2)}" y="${textY - 14}" width="${rectWidth}" height="20" fill="#ffffff" rx="10" ry="10" stroke="#cbd5e1" stroke-width="1.5"></rect>`;
+
+                labelGroup += `<text x="${textX}" y="${textY + 1}" text-anchor="middle" class="cardinality-label">${cardinality}</text>`;
+
+                if (labelStr) {
+                    const textBgWidth = labelStr.length * 6;
+                    labelGroup += `<rect x="${textX - (textBgWidth / 2)}" y="${textY + 10}" width="${textBgWidth}" height="18" fill="rgba(255,255,255,0.7)"></rect>`;
+                    labelGroup += `<text x="${textX}" y="${textY + 23}" text-anchor="middle" class="connection-text">${labelStr}</text>`;
+                }
+            }
+            svgContainer.innerHTML += labelGroup;
+        }
+
+        // Draw connections after layout rendering
+        function initConnections() {
+            const svgContainer = document.getElementById("svg-container");
+            svgContainer.innerHTML = '';
+
+            svgContainer.setAttribute('width', document.getElementById("er-diagram-container").offsetWidth);
+            svgContainer.setAttribute('height', document.getElementById("er-diagram-container").offsetHeight);
+
+            // Relaciones
+            drawLine('card-representante', 'card-solicitud', 'svg-container', '1:N', 'Gestiona', false);
+            drawLine('card-representante', 'card-datos-facturacion', 'svg-container', '1:N', 'Posee', false);
+            drawLine('card-solicitud', 'card-documento', 'svg-container', '1:N', 'Contiene', false);
+
+            // Solicitud -> Alumno (Normalización 1:1)
+            // Curvamos esta línea hacia abajo usando curveExtraY = 280 para que no choque con la tarjeta "Representante" y el texto flote libre.
+            drawLine('card-solicitud', 'card-alumno', 'svg-container', '1:1', 'Migra Datos (Acción Aceptada)', true, 280);
+
+            // Alumno -> Inscripcion (Historial 1:N)
+            drawLine('card-alumno', 'card-inscripcion', 'svg-container', '1:N', 'Genera Histórico de Año Escolar', false);
+        }
+
+        window.addEventListener('load', () => setTimeout(initConnections, 200));
+        window.addEventListener('resize', initConnections);
+
+        // PDF Download Func
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const element = document.getElementById('er-export-wrapper');
+            const svg = document.getElementById('svg-container');
+
+            // Temporary adjustments
+            svg.style.position = 'absolute';
+            element.style.padding = '10px';
+            element.style.boxShadow = 'none';
+            element.style.border = 'none';
+            element.classList.remove('bg-white');
+
+            const opt = {
+                margin: 10,
+                filename: 'diagrama-er-lidera-pedagogico.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, backgroundColor: '#f8fafc', windowWidth: 1400 },
+                jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.padding = '0';
+                element.style.boxShadow = '';
+                element.style.border = '';
+                element.classList.add('bg-white');
+            });
+        });
+    </script>
+</body>
+
+</html>
