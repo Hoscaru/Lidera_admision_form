@@ -647,6 +647,17 @@
                                         <input type="radio" name="rep1_sexo" value="F"> Femenino
                                     </label>
                                 </div>
+                                <div style="margin-top: 1rem;">
+                                    <label for="rep1_estado_civil" class="form-label">Estado Civil</label>
+                                    <select id="rep1_estado_civil" name="rep1_estado_civil" class="form-input">
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="soltero">Soltero(a)</option>
+                                        <option value="casado">Casado(a)</option>
+                                        <option value="divorciado">Divorciado(a)</option>
+                                        <option value="viudo">Viudo(a)</option>
+                                        <option value="concubino">Concubino(a)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -926,6 +937,17 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div style="margin-top: 1rem;">
+                                    <label for="rep2_estado_civil" class="form-label">Estado Civil</label>
+                                    <select id="rep2_estado_civil" name="rep2_estado_civil" class="form-input">
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="soltero">Soltero(a)</option>
+                                        <option value="casado">Casado(a)</option>
+                                        <option value="divorciado">Divorciado(a)</option>
+                                        <option value="viudo">Viudo(a)</option>
+                                        <option value="concubino">Concubino(a)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -1143,32 +1165,93 @@
                     <div id="resumen-content">
                         <!-- Resumen estudiante -->
                         <div class="resumen-card">
-                            <h4>Datos del Estudiante</h4>
-                            <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-asp-nombres">-</span></div>
-                            <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-asp-apellidos">-</span></div>
-                            <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-asp-fecha_nac">-</span></div>
-                            <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-asp-sexo">-</span></div>
-                            <div class="resumen-item"><span class="label">Grado:</span><span class="value" id="res-asp-grado">-</span></div>
-                            <div class="resumen-item"><span class="label">Año Escolar:</span><span class="value" id="res-asp-anio_escolar">-</span></div>
+                            <h4 class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                                Datos del Estudiante
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-asp-nombres">-</span></div>
+                                    <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-asp-apellidos">-</span></div>
+                                    <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-asp-fecha_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Edad:</span><span class="value" id="res-asp-edad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-asp-sexo">-</span></div>
+                                    <div class="resumen-item"><span class="label">País de nacimiento:</span><span class="value" id="res-asp-pais_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad de nacimiento:</span><span class="value" id="res-asp-ciudad_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Idiomas:</span><span class="value" id="res-asp-idiomas">-</span></div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Grado:</span><span class="value font-semibold text-sky-600" id="res-asp-grado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Año Escolar:</span><span class="value font-semibold text-sky-600" id="res-asp-anio_escolar">-</span></div>
+                                    <div class="resumen-item"><span class="label">Dirección:</span><span class="value" id="res-asp-direccion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad:</span><span class="value" id="res-asp-ciudad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Municipio:</span><span class="value" id="res-asp-municipio">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado:</span><span class="value" id="res-asp-estado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono celular:</span><span class="value" id="res-asp-celular">-</span></div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Resumen representante principal -->
                         <div class="resumen-card">
-                            <h4>Representante Principal</h4>
-                            <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-rep1-nombres">-</span></div>
-                            <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-rep1-apellidos">-</span></div>
-                            <div class="resumen-item"><span class="label">Cédula:</span><span class="value" id="res-rep1-cedula">-</span></div>
-                            <div class="resumen-item"><span class="label">Correo:</span><span class="value" id="res-rep1-correo">-</span></div>
-                            <div class="resumen-item"><span class="label">Celular:</span><span class="value" id="res-rep1-celular">-</span></div>
+                            <h4 class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                Representante Principal
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-rep1-nombres">-</span></div>
+                                    <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-rep1-apellidos">-</span></div>
+                                    <div class="resumen-item"><span class="label">Cédula:</span><span class="value" id="res-rep1-cedula">-</span></div>
+                                    <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-rep1-fecha_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Edad:</span><span class="value" id="res-rep1-edad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-rep1-sexo">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado civil:</span><span class="value" id="res-rep1-estado_civil">-</span></div>
+                                    <div class="resumen-item"><span class="label">Correo:</span><span class="value" id="res-rep1-correo">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono celular:</span><span class="value" id="res-rep1-celular">-</span></div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Profesión:</span><span class="value" id="res-rep1-profesion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ocupación:</span><span class="value" id="res-rep1-ocupacion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Empresa:</span><span class="value" id="res-rep1-empresa">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono trabajo:</span><span class="value" id="res-rep1-tlf_ofic">-</span></div>
+                                    <div class="resumen-item"><span class="label">Dirección:</span><span class="value" id="res-rep1-direccion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad:</span><span class="value" id="res-rep1-ciudad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado:</span><span class="value" id="res-rep1-estado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Religión:</span><span class="value" id="res-rep1-religion">-</span></div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Resumen segundo representante -->
                         <div class="resumen-card" id="resumen-rep2" style="display:none;">
-                            <h4>Segundo Representante</h4>
-                            <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-rep2-nombres">-</span></div>
-                            <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-rep2-apellidos">-</span></div>
-                            <div class="resumen-item"><span class="label">Cédula:</span><span class="value" id="res-rep2-cedula">-</span></div>
-                            <div class="resumen-item"><span class="label">Correo:</span><span class="value" id="res-rep2-correo">-</span></div>
+                            <h4 class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                Segundo Representante
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-rep2-nombres">-</span></div>
+                                    <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-rep2-apellidos">-</span></div>
+                                    <div class="resumen-item"><span class="label">Cédula:</span><span class="value" id="res-rep2-cedula">-</span></div>
+                                    <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-rep2-fecha_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Edad:</span><span class="value" id="res-rep2-edad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-rep2-sexo">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado civil:</span><span class="value" id="res-rep2-estado_civil">-</span></div>
+                                    <div class="resumen-item"><span class="label">Correo:</span><span class="value" id="res-rep2-correo">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono celular:</span><span class="value" id="res-rep2-celular">-</span></div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="resumen-item"><span class="label">Profesión:</span><span class="value" id="res-rep2-profesion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ocupación:</span><span class="value" id="res-rep2-ocupacion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Empresa:</span><span class="value" id="res-rep2-empresa">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono trabajo:</span><span class="value" id="res-rep2-tlf_ofic">-</span></div>
+                                    <div class="resumen-item"><span class="label">Dirección:</span><span class="value" id="res-rep2-direccion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad:</span><span class="value" id="res-rep2-ciudad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado:</span><span class="value" id="res-rep2-estado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Religión:</span><span class="value" id="res-rep2-religion">-</span></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -1366,8 +1449,21 @@
             document.getElementById('res-asp-nombres').textContent = document.getElementById('asp_nombres').value || '-';
             document.getElementById('res-asp-apellidos').textContent = document.getElementById('asp_apellidos').value || '-';
             document.getElementById('res-asp-fecha_nac').textContent = document.getElementById('asp_fecha_nac').value || '-';
-            const sexo = document.querySelector('input[name="asp_sexo"]:checked');
-            document.getElementById('res-asp-sexo').textContent = sexo ? (sexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
+            document.getElementById('res-asp-edad').textContent = document.getElementById('asp_edad').value || '-';
+            const aspSexo = document.querySelector('input[name="asp_sexo"]:checked');
+            document.getElementById('res-asp-sexo').textContent = aspSexo ? (aspSexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
+            document.getElementById('res-asp-pais_nac').textContent = document.getElementById('asp_pais_nac').value ? document.getElementById('asp_pais_nac').options[document.getElementById('asp_pais_nac').selectedIndex].text : '-';
+            document.getElementById('res-asp-ciudad_nac').textContent = document.getElementById('asp_ciudad_nac').value || '-';
+            document.getElementById('res-asp-otras_nac').textContent = document.getElementById('asp_otras_nacionalidades').value || '-';
+            document.getElementById('res-asp-idiomas').textContent = document.getElementById('asp_idiomas').value || '-';
+            document.getElementById('res-asp-direccion').textContent = document.getElementById('asp_direccion').value || '-';
+            document.getElementById('res-asp-codigo_postal').textContent = document.getElementById('asp_codigo_postal').value || '-';
+            document.getElementById('res-asp-ciudad').textContent = document.getElementById('asp_ciudad').value || '-';
+            document.getElementById('res-asp-municipio').textContent = document.getElementById('asp_municipio').value || '-';
+            document.getElementById('res-asp-estado').textContent = document.getElementById('asp_estado').value || '-';
+            document.getElementById('res-asp-pais').textContent = document.getElementById('asp_pais').value ? document.getElementById('asp_pais').options[document.getElementById('asp_pais').selectedIndex].text : '-';
+            document.getElementById('res-asp-tlf_hab').textContent = document.getElementById('asp_tlf_hab').value || '-';
+            document.getElementById('res-asp-celular').textContent = document.getElementById('asp_celular').value || '-';
             document.getElementById('res-asp-grado').textContent = document.getElementById('asp_grado').value || '-';
             document.getElementById('res-asp-anio_escolar').textContent = document.getElementById('asp_anio_escolar').value || '-';
 
@@ -1375,8 +1471,32 @@
             document.getElementById('res-rep1-nombres').textContent = document.getElementById('rep1_nombres').value || '-';
             document.getElementById('res-rep1-apellidos').textContent = document.getElementById('rep1_apellidos').value || '-';
             document.getElementById('res-rep1-cedula').textContent = (document.getElementById('rep1_nacionalidad').value || '') + '-' + (document.getElementById('rep1_cedula').value || '-');
-            document.getElementById('res-rep1-correo').textContent = document.getElementById('rep1_correo').value || '-';
+            document.getElementById('res-rep1-fecha_nac').textContent = document.getElementById('rep1_fecha_nac').value || '-';
+            document.getElementById('res-rep1-edad').textContent = document.getElementById('rep1_edad').value || '-';
+            const rep1Sexo = document.querySelector('input[name="rep1_sexo"]:checked');
+            document.getElementById('res-rep1-sexo').textContent = rep1Sexo ? (rep1Sexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
+            document.getElementById('res-rep1-estado_civil').textContent = document.getElementById('rep1_estado_civil').value ? document.getElementById('rep1_estado_civil').options[document.getElementById('rep1_estado_civil').selectedIndex].text : '-';
+            document.getElementById('res-rep1-pais_nac').textContent = document.getElementById('rep1_pais_nac').value ? document.getElementById('rep1_pais_nac').options[document.getElementById('rep1_pais_nac').selectedIndex].text : '-';
+            document.getElementById('res-rep1-ciudad_nac').textContent = document.getElementById('rep1_ciudad_nac').value || '-';
+            document.getElementById('res-rep1-otras_nac').textContent = document.getElementById('rep1_otras_nacionalidades').value || '-';
+            document.getElementById('res-rep1-idiomas').textContent = document.getElementById('rep1_idiomas').value || '-';
+            document.getElementById('res-rep1-direccion').textContent = document.getElementById('rep1_direccion').value || '-';
+            document.getElementById('res-rep1-codigo_postal').textContent = document.getElementById('rep1_codigo_postal').value || '-';
+            document.getElementById('res-rep1-municipio').textContent = document.getElementById('rep1_municipio').value || '-';
+            document.getElementById('res-rep1-estado').textContent = document.getElementById('rep1_estado').value || '-';
+            document.getElementById('res-rep1-pais').textContent = document.getElementById('rep1_pais').value ? document.getElementById('rep1_pais').options[document.getElementById('rep1_pais').selectedIndex].text : '-';
+            document.getElementById('res-rep1-tlf_hab').textContent = document.getElementById('rep1_tlf_hab').value || '-';
             document.getElementById('res-rep1-celular').textContent = document.getElementById('rep1_celular').value || '-';
+            document.getElementById('res-rep1-correo').textContent = document.getElementById('rep1_correo').value || '-';
+            document.getElementById('res-rep1-religion').textContent = document.getElementById('rep1_religion').value || '-';
+            document.getElementById('res-rep1-profesion').textContent = document.getElementById('rep1_profesion').value || '-';
+            document.getElementById('res-rep1-ocupacion').textContent = document.getElementById('rep1_ocupacion').value || '-';
+            document.getElementById('res-rep1-empresa').textContent = document.getElementById('rep1_empresa').value || '-';
+            document.getElementById('res-rep1-tlf_ofic').textContent = document.getElementById('rep1_tlf_ofic').value || '-';
+            document.getElementById('res-rep1-dir_trabajo').textContent = document.getElementById('rep1_dir_trabajo').value || '-';
+            document.getElementById('res-rep1-ciudad_trabajo').textContent = document.getElementById('rep1_ciudad_trabajo').value || '-';
+            document.getElementById('res-rep1-estado_trabajo').textContent = document.getElementById('rep1_estado_trabajo').value || '-';
+            document.getElementById('res-rep1-pais_trabajo').textContent = document.getElementById('rep1_pais_trabajo').value ? document.getElementById('rep1_pais_trabajo').options[document.getElementById('rep1_pais_trabajo').selectedIndex].text : '-';
 
             // Rep 2
             const tieneRep2 = document.getElementById('toggle-rep2').checked;
@@ -1385,7 +1505,32 @@
                 document.getElementById('res-rep2-nombres').textContent = document.getElementById('rep2_nombres').value || '-';
                 document.getElementById('res-rep2-apellidos').textContent = document.getElementById('rep2_apellidos').value || '-';
                 document.getElementById('res-rep2-cedula').textContent = (document.getElementById('rep2_nacionalidad').value || '') + '-' + (document.getElementById('rep2_cedula').value || '-');
+                document.getElementById('res-rep2-fecha_nac').textContent = document.getElementById('rep2_fecha_nac').value || '-';
+                document.getElementById('res-rep2-edad').textContent = document.getElementById('rep2_edad').value || '-';
+                const rep2Sexo = document.querySelector('input[name="rep2_sexo"]:checked');
+                document.getElementById('res-rep2-sexo').textContent = rep2Sexo ? (rep2Sexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
+                document.getElementById('res-rep2-estado_civil').textContent = document.getElementById('rep2_estado_civil').value ? document.getElementById('rep2_estado_civil').options[document.getElementById('rep2_estado_civil').selectedIndex].text : '-';
+                document.getElementById('res-rep2-pais_nac').textContent = document.getElementById('rep2_pais_nac').value ? document.getElementById('rep2_pais_nac').options[document.getElementById('rep2_pais_nac').selectedIndex].text : '-';
+                document.getElementById('res-rep2-ciudad_nac').textContent = document.getElementById('rep2_ciudad_nac').value || '-';
+                document.getElementById('res-rep2-otras_nac').textContent = document.getElementById('rep2_otras_nacionalidades').value || '-';
+                document.getElementById('res-rep2-idiomas').textContent = document.getElementById('rep2_idiomas').value || '-';
+                document.getElementById('res-rep2-direccion').textContent = document.getElementById('rep2_direccion').value || '-';
+                document.getElementById('res-rep2-codigo_postal').textContent = document.getElementById('rep2_codigo_postal').value || '-';
+                document.getElementById('res-rep2-municipio').textContent = document.getElementById('rep2_municipio').value || '-';
+                document.getElementById('res-rep2-estado').textContent = document.getElementById('rep2_estado').value || '-';
+                document.getElementById('res-rep2-pais').textContent = document.getElementById('rep2_pais').value ? document.getElementById('rep2_pais').options[document.getElementById('rep2_pais').selectedIndex].text : '-';
+                document.getElementById('res-rep2-tlf_hab').textContent = document.getElementById('rep2_tlf_hab').value || '-';
+                document.getElementById('res-rep2-celular').textContent = document.getElementById('rep2_celular').value || '-';
                 document.getElementById('res-rep2-correo').textContent = document.getElementById('rep2_correo').value || '-';
+                document.getElementById('res-rep2-religion').textContent = document.getElementById('rep2_religion').value || '-';
+                document.getElementById('res-rep2-profesion').textContent = document.getElementById('rep2_profesion').value || '-';
+                document.getElementById('res-rep2-ocupacion').textContent = document.getElementById('rep2_ocupacion').value || '-';
+                document.getElementById('res-rep2-empresa').textContent = document.getElementById('rep2_empresa').value || '-';
+                document.getElementById('res-rep2-tlf_ofic').textContent = document.getElementById('rep2_tlf_ofic').value || '-';
+                document.getElementById('res-rep2-dir_trabajo').textContent = document.getElementById('rep2_dir_trabajo').value || '-';
+                document.getElementById('res-rep2-ciudad_trabajo').textContent = document.getElementById('rep2_ciudad_trabajo').value || '-';
+                document.getElementById('res-rep2-estado_trabajo').textContent = document.getElementById('rep2_estado_trabajo').value || '-';
+                document.getElementById('res-rep2-pais_trabajo').textContent = document.getElementById('rep2_pais_trabajo').value ? document.getElementById('rep2_pais_trabajo').options[document.getElementById('rep2_pais_trabajo').selectedIndex].text : '-';
             }
 
         }
