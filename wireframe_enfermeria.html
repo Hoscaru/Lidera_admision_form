@@ -304,7 +304,7 @@
         <div class="bg-white border border-slate-200 rounded-2xl px-6 py-4 mb-8 shadow-sm">
             <div class="flex items-center" id="progress-bar">
             </div>
-            <p class="text-center text-xs text-slate-400 mt-3" id="step-label">Paso 1 de 3</p>
+            <p class="text-center text-xs text-slate-400 mt-3" id="step-label">Paso 1 de 4</p>
         </div>
 
         <!-- Form Card -->
@@ -538,9 +538,183 @@
                 </div>
 
                 <!-- ======================== -->
-                <!-- PASO 3: RESUMEN -->
+                <!-- PASO 3: VACUNAS RECIBIDAS -->
                 <!-- ======================== -->
                 <div id="step-3" class="step-panel p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Vacunas Recibidas
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Marque las dosis y refuerzos aplicados al estudiante.</p>
+
+                    <div class="sub-section">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="text-left p-2 font-semibold text-slate-700 border border-slate-200">Tipo de Vacuna</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">1ra</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">2da</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">3ra</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">4ta</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">Ref. #1</th>
+                                        <th class="p-1 font-semibold text-slate-700 border border-slate-200 text-center">Ref. #2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Antivariolica</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_antivariolica_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Tuberculosis (BCG)</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_bcg_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Poliomielitis</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_poliomielitis_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Difteria, Pertussis y Tétanos (Triple)</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_dpt_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Haemophilus influenzae tipo B</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hib_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Trivalente Viral (Sarampión, Rubeola, Parotiditis)</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_trivalente_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Hepatitis B</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisb_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Meningococo conjugada C</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_meningococo_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Hepatitis A</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_hepatitisa_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Streptococcus Pneumoniae 13v (Prevenar)</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo13_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Streptococcus Pneumoniae 23v</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_neumo23_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Fiebre Amarilla</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_fiebreamarilla_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Rotavirus</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_rotavirus_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Anti Influenza</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_influenza_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-slate-200 font-medium">Covid-19</td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_d1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_d2" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_d3" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_d4" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_r1" class="w-4 h-4 accent-green-600"></td>
+                                        <td class="border border-slate-200 text-center"><input type="checkbox" name="vac_covid_r2" class="w-4 h-4 accent-green-600"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-5">
+                            <label for="otras_vacunas" class="form-label">Otras Vacunas</label>
+                            <textarea id="otras_vacunas" name="otras_vacunas" class="form-input" rows="3" placeholder="Indique otras vacunas no mencionadas anteriormente..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================== -->
+                <!-- PASO 4: RESUMEN -->
+                <!-- ======================== -->
+                <div id="step-4" class="step-panel p-6 md:p-8">
                     <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
                         <svg class="h-5 w-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -566,7 +740,7 @@
 
                         <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">
                             Información Médica</h3>
-                        <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="grid grid-cols-2 gap-2 text-sm mb-4">
                             <div class="text-slate-500">Padece enfermedad:</div>
                             <div id="res_padece_enfermedad" class="font-medium">-</div>
                             <div class="text-slate-500">Tratamiento quirúrgico:</div>
@@ -613,11 +787,12 @@
     </div>
 
     <script>
-        const TOTAL_STEPS = 3;
+        const TOTAL_STEPS = 4;
 
         const STEP_LABELS = [
             'Datos del Alumno',
             'Información Médica',
+            'Vacunas Recibidas',
             'Resumen'
         ];
 
@@ -653,7 +828,7 @@
         }
 
         function showStep(step) {
-            if (step === 3) {
+            if (step === 4) {
                 document.getElementById('res_alu_nombre').textContent = document.getElementById('alu_nombre').value || '-';
                 document.getElementById('res_alu_fecha_nac').textContent = document.getElementById('alu_fecha_nac').value || '-';
                 document.getElementById('res_alu_edad').textContent = document.getElementById('alu_edad').value || '-';
