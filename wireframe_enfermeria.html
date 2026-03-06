@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilla de Enfermería</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            min-height: 100vh;
+        }
+
+        .step-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border: 2px solid #cbd5e1;
+            background: #fff;
+            color: #94a3b8;
+            transition: all .3s;
+            flex-shrink: 0;
+        }
+
+        .step-pill.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: #fff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, .18);
+        }
+
+        .step-pill.done {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: #fff;
+        }
+
+        .step-connector {
+            flex: 1;
+            height: 2px;
+            background: #e2e8f0;
+            transition: background .3s;
+        }
+
+        .step-connector.done {
+            background: #22c55e;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.4rem;
+            letter-spacing: .01em;
+        }
+
+        .form-hint {
+            display: block;
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin-top: 0.3rem;
+        }
+
+        .optional-badge {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #94a3b8;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 1px 6px;
+            margin-left: 6px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.6rem 0.85rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: #fff;
+            font-size: 0.92rem;
+            color: #1e293b;
+            transition: border-color .2s, box-shadow .2s;
+            appearance: none;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, .18);
+        }
+
+        select.form-input {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            padding-right: 2.2rem;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .sub-section {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #fff;
+        }
+
+        .sub-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .sub-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 46px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-switch .slider {
+            position: absolute;
+            inset: 0;
+            background: #cbd5e1;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .toggle-switch .slider:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .3s;
+        }
+
+        .toggle-switch input:checked+.slider {
+            background: #2563eb;
+        }
+
+        .toggle-switch input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .btn-next {
+            background: #2563eb;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 0.65rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: background .2s, transform .15s;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, .25);
+        }
+
+        .btn-next:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-prev {
+            background: #fff;
+            color: #475569;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.65rem;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: border-color .2s;
+        }
+
+        .btn-prev:hover {
+            border-color: #94a3b8;
+        }
+
+        .btn-submit {
+            background: #16a34a;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.85rem 2.5rem;
+            border-radius: 0.65rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background .2s, transform .15s;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, .28);
+        }
+
+        .btn-submit:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+        }
+
+        .step-panel {
+            display: none;
+        }
+
+        .step-panel.active {
+            display: block;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #2563eb;
+        }
+
+        .conditional-field {
+            display: none;
+            margin-top: 0.75rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .conditional-field.visible {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="py-10 px-4">
+
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header -->
+        <div class="mb-8 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Planilla de Enfermería</h1>
+            <p class="text-slate-500 mt-1 text-sm">Información médica del estudiante para el expediente escolar.</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="bg-white border border-slate-200 rounded-2xl px-6 py-4 mb-8 shadow-sm">
+            <div class="flex items-center" id="progress-bar">
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-3" id="step-label">Paso 1 de 3</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+            <form id="multi-step-form" novalidate onsubmit="return false;">
+
+                <!-- ====================== -->
+                <!-- PASO 1: DATOS DEL ALUMNO -->
+                <!-- ====================== -->
+                <div id="step-1" class="step-panel active p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        Datos del Alumno
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Información básica del estudiante.</p>
+
+                    <div class="sub-section">
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <div class="sm:col-span-2">
+                                <label for="alu_nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" id="alu_nombre" name="alu_nombre" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="alu_fecha_nac" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" id="alu_fecha_nac" name="alu_fecha_nac" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="alu_edad" class="form-label">Edad</label>
+                                <input type="number" id="alu_edad" name="alu_edad" class="form-input" min="1" max="25" required>
+                            </div>
+                            <div>
+                                <label for="alu_anio_escolar" class="form-label">Año Escolar</label>
+                                <select id="alu_anio_escolar" name="alu_anio_escolar" class="form-input" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option>2025-2026</option>
+                                    <option>2026-2027</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="alu_curso" class="form-label">Curso (Grado que cursa)</label>
+                                <select id="alu_curso" name="alu_curso" class="form-input" required>
+                                    <option value="" disabled selected>Seleccione el grado...</option>
+                                    <optgroup label="Educación Inicial">
+                                        <option value="mat">Maternal</option>
+                                        <option value="pre1">Preescolar Nivel I</option>
+                                        <option value="pre2">Preescolar Nivel II</option>
+                                        <option value="pre3">Preescolar Nivel III</option>
+                                    </optgroup>
+                                    <optgroup label="Educación Primaria">
+                                        <option value="p1">1er Grado</option>
+                                        <option value="p2">2do Grado</option>
+                                        <option value="p3">3er Grado</option>
+                                        <option value="p4">4to Grado</option>
+                                        <option value="p5">5to Grado</option>
+                                        <option value="p6">6to Grado</option>
+                                    </optgroup>
+                                    <optgroup label="Educación Media General">
+                                        <option value="m1">1er Año</option>
+                                        <option value="m2">2do Año</option>
+                                        <option value="m3">3er Año</option>
+                                        <option value="m4">4to Año</option>
+                                        <option value="m5">5to Año</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================== -->
+                <!-- PASO 2: INFORMACIÓN MÉDICA -->
+                <!-- ======================== -->
+                <div id="step-2" class="step-panel p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        Información Médica
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Datos de salud del estudiante.</p>
+
+                    <!-- Padece alguna enfermedad -->
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Estado de Salud
+                        </p>
+                        <div class="mb-4">
+                            <label class="form-label">¿Padece alguna enfermedad?</label>
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="padece_enfermedad" value="si" onchange="toggleConditional('padece_enfermedad')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="padece_enfermedad" value="no" onchange="toggleConditional('padece_enfermedad')"> No
+                                </label>
+                            </div>
+                            <div id="padece_enfermedad_conditional" class="conditional-field">
+                                <label for="padece_enfermedad_especificar" class="form-label">Especifique el tipo de enfermedad</label>
+                                <textarea id="padece_enfermedad_especificar" name="padece_enfermedad_especificar" class="form-input" rows="3" placeholder="Describa la enfermedad..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">¿Ha recibido algún tratamiento quirúrgico?</label>
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="tratamiento_quirurgico" value="si" onchange="toggleConditional('tratamiento_quirurgico')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tratamiento_quirurgico" value="no" onchange="toggleConditional('tratamiento_quirurgico')"> No
+                                </label>
+                            </div>
+                            <div id="tratamiento_quirurgico_conditional" class="conditional-field">
+                                <label for="tratamiento_quirurgico_especificar" class="form-label">Especifique el tratamiento</label>
+                                <textarea id="tratamiento_quirurgico_especificar" name="tratamiento_quirurgico_especificar" class="form-input" rows="3" placeholder="Describa el tratamiento quirúrgico..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">¿Presenta el estudiante alguna alteración en la audición?</label>
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="alteracion_audicion" value="si" onchange="toggleConditional('alteracion_audicion')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="alteracion_audicion" value="no" onchange="toggleConditional('alteracion_audicion')"> No
+                                </label>
+                            </div>
+                            <div id="alteracion_audicion_conditional" class="conditional-field">
+                                <label for="alteracion_audicion_especificar" class="form-label">Especifique la alteración</label>
+                                <textarea id="alteracion_audicion_especificar" name="alteracion_audicion_especificar" class="form-input" rows="3" placeholder="Describa la alteración en la audición..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">¿Presenta el estudiante alguna alteración en la visión?</label>
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="alteracion_vision" value="si" onchange="toggleConditional('alteracion_vision')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="alteracion_vision" value="no" onchange="toggleConditional('alteracion_vision')"> No
+                                </label>
+                            </div>
+                            <div id="alteracion_vision_conditional" class="conditional-field">
+                                <label for="alteracion_vision_especificar" class="form-label">Especifique la alteración</label>
+                                <textarea id="alteracion_vision_especificar" name="alteracion_vision_especificar" class="form-input" rows="3" placeholder="Describa la alteración en la visión..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">¿Puede realizar educación física sin dificultad?</label>
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="educacion_fisica" value="si" onchange="toggleConditional('educacion_fisica')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="educacion_fisica" value="no" onchange="toggleConditional('educacion_fisica')"> No
+                                </label>
+                            </div>
+                            <div id="educacion_fisica_conditional" class="conditional-field">
+                                <label for="educacion_fisica_explicar" class="form-label">Explique por qué</label>
+                                <textarea id="educacion_fisica_explicar" name="educacion_fisica_explicar" class="form-input" rows="3" placeholder="Explique la razón..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Necesidades de aprendizaje -->
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            Necesidades de Aprendizaje
+                        </p>
+                        <p class="text-xs text-slate-500 mb-4">En nuestro compromiso con la inclusión, deseasnos comprender las necesidades de aprendizaje de cada estudiante. ¿Existe alguna condición, necesidad o estilo de aprendizaje específico que consideren importante que conozcamos para poder ofrecer el mejor apoyo educativo a su representado?</p>
+                        
+                        <div class="mb-4">
+                            <div class="radio-group mt-2">
+                                <label class="radio-option">
+                                    <input type="radio" name="necesidad_aprendizaje" value="si" onchange="toggleConditional('necesidad_aprendizaje')"> Sí
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="necesidad_aprendizaje" value="no" onchange="toggleConditional('necesidad_aprendizaje')"> No
+                                </label>
+                            </div>
+                            <div id="necesidad_aprendizaje_conditional" class="conditional-field">
+                                <label for="necesidad_aprendizaje_especificar" class="form-label">Especifique la condición o necesidad</label>
+                                <textarea id="necesidad_aprendizaje_especificar" name="necesidad_aprendizaje_especificar" class="form-input" rows="3" placeholder="Describa la condición, necesidad o estilo de aprendizaje..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campos adicionales -->
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            Información Adicional
+                        </p>
+                        <div class="grid grid-cols-1 gap-5">
+                            <div>
+                                <label for="contraindicaciones" class="form-label">Contraindicaciones</label>
+                                <textarea id="contraindicaciones" name="contraindicaciones" class="form-input" rows="3" placeholder="Indique cualquier contraindicación médica..."></textarea>
+                            </div>
+                            <div>
+                                <label for="condiciones_especiales" class="form-label">Condiciones Especiales</label>
+                                <textarea id="condiciones_especiales" name="condiciones_especiales" class="form-input" rows="3" placeholder="Indique condiciones especiales relevantes..."></textarea>
+                            </div>
+                            <div>
+                                <label for="observaciones" class="form-label">Observaciones</label>
+                                <textarea id="observaciones" name="observaciones" class="form-input" rows="3" placeholder="Otras observaciones importantes..."></textarea>
+                            </div>
+                            <div>
+                                <label for="alergias" class="form-label">Alergias</label>
+                                <textarea id="alergias" name="alergias" class="form-input" rows="3" placeholder="Indique alergias conocidas (medicamentos, alimentos, etc.)..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================== -->
+                <!-- PASO 3: RESUMEN -->
+                <!-- ======================== -->
+                <div id="step-3" class="step-panel p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Resumen
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Revise los datos antes de enviar.</p>
+
+                    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                        <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">
+                            Datos del Alumno</h3>
+                        <div class="grid grid-cols-2 gap-2 text-sm mb-4">
+                            <div class="text-slate-500">Nombre:</div>
+                            <div id="res_alu_nombre" class="font-medium">-</div>
+                            <div class="text-slate-500">Fecha de nacimiento:</div>
+                            <div id="res_alu_fecha_nac" class="font-medium">-</div>
+                            <div class="text-slate-500">Edad:</div>
+                            <div id="res_alu_edad" class="font-medium">-</div>
+                            <div class="text-slate-500">Curso:</div>
+                            <div id="res_alu_curso" class="font-medium">-</div>
+                        </div>
+
+                        <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">
+                            Información Médica</h3>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="text-slate-500">Padece enfermedad:</div>
+                            <div id="res_padece_enfermedad" class="font-medium">-</div>
+                            <div class="text-slate-500">Tratamiento quirúrgico:</div>
+                            <div id="res_tratamiento_quirurgico" class="font-medium">-</div>
+                            <div class="text-slate-500">Alteración audición:</div>
+                            <div id="res_alteracion_audicion" class="font-medium">-</div>
+                            <div class="text-slate-500">Alteración visión:</div>
+                            <div id="res_alteracion_vision" class="font-medium">-</div>
+                            <div class="text-slate-500">Educación física:</div>
+                            <div id="res_educacion_fisica" class="font-medium">-</div>
+                        </div>
+                    </div>
+
+                    <!-- Confirmación -->
+                    <div class="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl flex gap-3">
+                        <svg class="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-xs text-amber-800 leading-relaxed">Al enviar este formulario, usted
+                            <strong>certifica que todos los datos son verídicos</strong> y acepta que la institución los
+                            utilizará exclusivamente para el expediente médico escolar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ======================== -->
+                <!-- NAVIGATION FOOTER -->
+                <!-- ======================== -->
+                <div class="flex items-center justify-between px-6 md:px-8 py-5 border-t border-slate-100 bg-slate-50">
+                    <button type="button" id="btn-prev" class="btn-prev hidden" onclick="changeStep(-1)">←
+                        Anterior</button>
+                    <div class="flex-1"></div>
+                    <button type="button" id="btn-next" class="btn-next" onclick="changeStep(1)">Siguiente →</button>
+                    <button type="button" id="btn-submit" class="btn-submit hidden" onclick="guardarDatos()">✓
+                        Guardar</button>
+                </div>
+
+            </form>
+        </div>
+
+        <p class="text-center text-xs text-slate-400 mt-6">ERP Escolar LIDERA · Área de Enfermería</p>
+    </div>
+
+    <script>
+        const TOTAL_STEPS = 3;
+
+        const STEP_LABELS = [
+            'Datos del Alumno',
+            'Información Médica',
+            'Resumen'
+        ];
+
+        let currentStep = 1;
+
+        function renderProgressBar() {
+            const bar = document.getElementById('progress-bar');
+            bar.innerHTML = '';
+            for (let i = 1; i <= TOTAL_STEPS; i++) {
+                const pill = document.createElement('div');
+                pill.className = 'step-pill';
+                if (i < currentStep) { 
+                    pill.className += ' done'; 
+                    pill.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>`; 
+                }
+                else if (i === currentStep) { 
+                    pill.className += ' active'; 
+                    pill.textContent = i; 
+                }
+                else { 
+                    pill.textContent = i; 
+                }
+                pill.title = STEP_LABELS[i - 1];
+                bar.appendChild(pill);
+                
+                if (i < TOTAL_STEPS) {
+                    const conn = document.createElement('div');
+                    conn.className = 'step-connector' + (i < currentStep ? ' done' : '');
+                    bar.appendChild(conn);
+                }
+            }
+            document.getElementById('step-label').textContent = `Paso ${currentStep} de ${TOTAL_STEPS}: ${STEP_LABELS[currentStep - 1]}`;
+        }
+
+        function showStep(step) {
+            if (step === 3) {
+                document.getElementById('res_alu_nombre').textContent = document.getElementById('alu_nombre').value || '-';
+                document.getElementById('res_alu_fecha_nac').textContent = document.getElementById('alu_fecha_nac').value || '-';
+                document.getElementById('res_alu_edad').textContent = document.getElementById('alu_edad').value || '-';
+                
+                var el = document.getElementById('alu_curso');
+                document.getElementById('res_alu_curso').textContent = el ? (el.options[el.selectedIndex]?.text || '-') : '-';
+
+                document.getElementById('res_padece_enfermedad').textContent = getRadioValue('padece_enfermedad');
+                document.getElementById('res_tratamiento_quirurgico').textContent = getRadioValue('tratamiento_quirurgico');
+                document.getElementById('res_alteracion_audicion').textContent = getRadioValue('alteracion_audicion');
+                document.getElementById('res_alteracion_vision').textContent = getRadioValue('alteracion_vision');
+                document.getElementById('res_educacion_fisica').textContent = getRadioValue('educacion_fisica');
+            }
+
+            document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+            const prevBtn = document.getElementById('btn-prev');
+            const nextBtn = document.getElementById('btn-next');
+            const submitBtn = document.getElementById('btn-submit');
+
+            prevBtn.classList.toggle('hidden', step === 1);
+            nextBtn.classList.toggle('hidden', step === TOTAL_STEPS);
+            submitBtn.classList.toggle('hidden', step !== TOTAL_STEPS);
+            renderProgressBar();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getRadioValue(name) {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            return el ? el.value.toUpperCase() : '-';
+        }
+
+        function changeStep(direction) {
+            const newStep = currentStep + direction;
+            if (newStep < 1 || newStep > TOTAL_STEPS) return;
+            currentStep = newStep;
+            showStep(currentStep);
+        }
+
+        function toggleConditional(fieldName) {
+            const radios = document.querySelectorAll(`input[name="${fieldName}"]`);
+            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+            const conditionalEl = document.getElementById(`${fieldName}_conditional`);
+            
+            if (conditionalEl) {
+                conditionalEl.classList.toggle('visible', selected && selected.value === 'si');
+            }
+        }
+
+        function guardarDatos() {
+            const form = document.getElementById('multi-step-form');
+            const formData = new FormData(form);
+            const data = {};
+
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+
+            const radios = ['padece_enfermedad', 'tratamiento_quirurgico', 'alteracion_audicion', 'alteracion_vision', 'educacion_fisica', 'necesidad_aprendizaje'];
+            radios.forEach(name => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                if (el) data[name] = el.value;
+            });
+
+            localStorage.setItem('enfermeria_data', JSON.stringify(data));
+            
+            alert('Datos guardados correctamente. Esto es un demo.');
+        }
+
+        // Init
+        renderProgressBar();
+        showStep(1);
+    </script>
+</body>
+
+</html>

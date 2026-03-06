@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripción — Formulario Multi-Paso</title>
+    <title>Planilla de Inscripción</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -357,7 +357,7 @@
 
         <!-- Header -->
         <div class="mb-8 text-center">
-            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Formulario de Inscripción</h1>
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Planilla de Inscripción</h1>
             <p class="text-slate-500 mt-1 text-sm">Complete todos los pasos para formalizar la inscripción escolar.
             </p>
         </div>
@@ -397,31 +397,36 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label class="form-label">Nombres Completos <span class="heredado-badge">Heredado</span></label>
-                                <input type="text" id="asp_nombres" name="asp_nombres" class="form-input readonly" readonly>
+                                <label class="form-label">Nombres <span class="heredado-badge">Heredado</span></label>
+                                <input type="text" id="alu_nombres" name="alu_nombres" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Apellidos Completos <span class="heredado-badge">Heredado</span></label>
-                                <input type="text" id="asp_apellidos" name="asp_apellidos" class="form-input readonly" readonly>
+                                <label class="form-label">Apellidos <span class="heredado-badge">Heredado</span></label>
+                                <input type="text" id="alu_apellidos" name="alu_apellidos" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Fecha de Nacimiento <span class="heredado-badge">Heredado</span></label>
-                                <input type="date" id="asp_fecha_nac" name="asp_fecha_nac" class="form-input readonly" readonly>
+                                <label class="form-label">Fec. Nacimiento <span class="heredado-badge">Heredado</span></label>
+                                <input type="date" id="alu_fecha_nac" name="alu_fecha_nac" class="form-input readonly" readonly>
                             </div>
                             <div>
                                 <label class="form-label">Edad</label>
-                                <input type="text" id="asp_edad" name="asp_edad" class="form-input" readonly placeholder="Se calculará automáticamente">
+                                <input type="text" id="alu_edad" name="alu_edad" class="form-input" readonly placeholder="Se calculará automáticamente">
                             </div>
                             <div>
                                 <label class="form-label">Sexo <span class="heredado-badge">Heredado</span></label>
                                 <div class="radio-group mt-2">
                                     <label class="radio-option">
-                                        <input type="radio" name="asp_sexo" value="M" disabled> Masculino
+                                        <input type="radio" name="alu_sexo" value="M" disabled> Masculino
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="asp_sexo" value="F" disabled> Femenino
+                                        <input type="radio" name="alu_sexo" value="F" disabled> Femenino
                                     </label>
                                 </div>
+                            </div>
+                            <div>
+                                <label for="alu_cedula_escolar" class="form-label">Cédula Escolar</label>
+                                <input type="text" id="alu_cedula_escolar" name="alu_cedula_escolar" class="form-input">
+                                <span class="form-hint">Número de cédula escolar del alumno</span>
                             </div>
                         </div>
                     </div>
@@ -435,12 +440,12 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            Lugar de Nacimiento
+                            Lugar Nac.
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="asp_pais_nac" class="form-label">País de Nacimiento</label>
-                                <select id="asp_pais_nac" name="asp_pais_nac" class="form-input">
+                                <label for="alu_pais_nac" class="form-label">País Nac.</label>
+                                <select id="alu_pais_nac" name="alu_pais_nac" class="form-input">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="VE">Venezuela</option>
                                     <option value="CO">Colombia</option>
@@ -456,12 +461,12 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="asp_ciudad_nac" class="form-label">Ciudad de Nacimiento</label>
-                                <input type="text" id="asp_ciudad_nac" name="asp_ciudad_nac" class="form-input">
+                                <label for="alu_ciudad_nac" class="form-label">Ciudad Nac.</label>
+                                <input type="text" id="alu_ciudad_nac" name="alu_ciudad_nac" class="form-input">
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="asp_otras_nacionalidades" class="form-label">Otras Nacionalidades <span class="optional-badge">Opcional</span></label>
-                                <input type="text" id="asp_otras_nacionalidades" name="asp_otras_nacionalidades" class="form-input" placeholder="Ej: Colombiano, Español">
+                                <label for="alu_otras_nacionalidades" class="form-label">Otras Nac. <span class="optional-badge">Opcional</span></label>
+                                <input type="text" id="alu_otras_nacionalidades" name="alu_otras_nacionalidades" class="form-input" placeholder="Ej: Colombiano, Español">
                             </div>
                         </div>
                     </div>
@@ -477,8 +482,8 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div class="sm:col-span-2">
-                                <label for="asp_idiomas" class="form-label">Idiomas que habla <span class="optional-badge">Opcional</span></label>
-                                <input type="text" id="asp_idiomas" name="asp_idiomas" class="form-input" placeholder="Ej: Español, Inglés">
+                                <label for="alu_idiomas" class="form-label">Idiomas <span class="optional-badge">Opcional</span></label>
+                                <input type="text" id="alu_idiomas" name="alu_idiomas" class="form-input" placeholder="Ej: Español, Inglés">
                                 <span class="form-hint">Separe los idiomas con coma</span>
                             </div>
                         </div>
@@ -493,33 +498,33 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            Dirección de Habitación
+                            Dirección Hab.
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div class="sm:col-span-2">
-                                <label for="asp_direccion" class="form-label">Dirección</label>
-                                <input type="text" id="asp_direccion" name="asp_direccion" class="form-input">
+                                <label for="alu_direccion" class="form-label">Dirección</label>
+                                <input type="text" id="alu_direccion" name="alu_direccion" class="form-input">
                                 <span class="form-hint">Urb., Calle, Edificio / Casa, Piso</span>
                             </div>
                             <div>
-                                <label for="asp_codigo_postal" class="form-label">Código Postal <span class="optional-badge">Opcional</span></label>
-                                <input type="text" id="asp_codigo_postal" name="asp_codigo_postal" class="form-input">
+                                <label for="alu_codigo_postal" class="form-label">Cód. Postal <span class="optional-badge">Opcional</span></label>
+                                <input type="text" id="alu_codigo_postal" name="alu_codigo_postal" class="form-input">
                             </div>
                             <div>
-                                <label for="asp_ciudad" class="form-label">Ciudad</label>
-                                <input type="text" id="asp_ciudad" name="asp_ciudad" class="form-input">
+                                <label for="alu_ciudad" class="form-label">Ciudad</label>
+                                <input type="text" id="alu_ciudad" name="alu_ciudad" class="form-input">
                             </div>
                             <div>
-                                <label for="asp_municipio" class="form-label">Municipio</label>
-                                <input type="text" id="asp_municipio" name="asp_municipio" class="form-input">
+                                <label for="alu_municipio" class="form-label">Municipio</label>
+                                <input type="text" id="alu_municipio" name="alu_municipio" class="form-input">
                             </div>
                             <div>
-                                <label for="asp_estado" class="form-label">Estado</label>
-                                <input type="text" id="asp_estado" name="asp_estado" class="form-input">
+                                <label for="alu_estado" class="form-label">Estado</label>
+                                <input type="text" id="alu_estado" name="alu_estado" class="form-input">
                             </div>
                             <div>
-                                <label for="asp_pais" class="form-label">País</label>
-                                <select id="asp_pais" name="asp_pais" class="form-input">
+                                <label for="alu_pais" class="form-label">País</label>
+                                <select id="alu_pais" name="alu_pais" class="form-input">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="VE" selected>Venezuela</option>
                                     <option value="CO">Colombia</option>
@@ -548,12 +553,12 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="asp_tlf_hab" class="form-label">Teléfono de Habitación <span class="optional-badge">Opcional</span></label>
-                                <input type="tel" id="asp_tlf_hab" name="asp_tlf_hab" class="form-input" placeholder="Ej: 0212-1234567">
+                                <label for="alu_tlf_hab" class="form-label">Tlf. Habitación <span class="optional-badge">Opcional</span></label>
+                                <input type="tel" id="alu_tlf_hab" name="alu_tlf_hab" class="form-input" placeholder="Ej: 0212-1234567">
                             </div>
                             <div>
-                                <label for="asp_celular" class="form-label">Teléfono Celular</label>
-                                <input type="tel" id="asp_celular" name="asp_celular" class="form-input" placeholder="Ej: 0414-1234567">
+                                <label for="alu_celular" class="form-label">Celular</label>
+                                <input type="tel" id="alu_celular" name="alu_celular" class="form-input" placeholder="Ej: 0414-1234567">
                             </div>
                         </div>
                     </div>
@@ -570,11 +575,11 @@
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
                                 <label class="form-label">Grado / Año a Cursar <span class="heredado-badge">Heredado</span></label>
-                                <input type="text" id="asp_grado" name="asp_grado" class="form-input readonly" readonly>
+                                <input type="text" id="alu_grado" name="alu_grado" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label for="asp_anio_escolar" class="form-label">Año Escolar</label>
-                                <select id="asp_anio_escolar" name="asp_anio_escolar" class="form-input">
+                                <label for="alu_anio_escolar" class="form-label">Año Escolar</label>
+                                <select id="alu_anio_escolar" name="alu_anio_escolar" class="form-input">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="2025-2026">2025-2026</option>
                                     <option value="2026-2027">2026-2027</option>
@@ -583,6 +588,96 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Añadir otro alumno -->
+                    <div class="mt-8 flex items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl mb-6">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggle-alu2" onchange="toggleAlu2(this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700">Añadir otro alumno a esta inscripción</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Si desea inscribir a un hermano o familiar adicional.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="alu2-fields" class="hidden">
+                        <div class="sub-section" style="border-color: #93c5fd; background: #eff6ff;">
+                            <p class="sub-section-title" style="color: #2563eb; border-color: #bfdbfe;">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                                Segundo Alumno
+                            </p>
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div>
+                                    <label for="alu2_nombres" class="form-label">Nombres</label>
+                                    <input type="text" id="alu2_nombres" name="alu2_nombres" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="alu2_apellidos" class="form-label">Apellidos</label>
+                                    <input type="text" id="alu2_apellidos" name="alu2_apellidos" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="alu2_fecha_nac" class="form-label">Fec. Nacimiento</label>
+                                    <input type="date" id="alu2_fecha_nac" name="alu2_fecha_nac" class="form-input">
+                                </div>
+                                <div>
+                                    <label class="form-label">Sexo</label>
+                                    <div class="radio-group mt-2">
+                                        <label class="radio-option"><input type="radio" name="alu2_sexo" value="M"> Masculino</label>
+                                        <label class="radio-option"><input type="radio" name="alu2_sexo" value="F"> Femenino</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="alu2_cedula_escolar" class="form-label">Cédula Escolar</label>
+                                    <input type="text" id="alu2_cedula_escolar" name="alu2_cedula_escolar" class="form-input">
+                                </div>
+                                <div>
+                                    <label for="alu2_grado" class="form-label">Grado a Cursar</label>
+                                    <select id="alu2_grado" name="alu2_grado" class="form-input">
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <optgroup label="Educación Inicial">
+                                            <option value="mat">Maternal</option>
+                                            <option value="pre1">Preescolar Nivel I</option>
+                                            <option value="pre2">Preescolar Nivel II</option>
+                                            <option value="pre3">Preescolar Nivel III</option>
+                                        </optgroup>
+                                        <optgroup label="Educación Primaria">
+                                            <option value="p1">1er Grado</option>
+                                            <option value="p2">2do Grado</option>
+                                            <option value="p3">3er Grado</option>
+                                            <option value="p4">4to Grado</option>
+                                            <option value="p5">5to Grado</option>
+                                            <option value="p6">6to Grado</option>
+                                        </optgroup>
+                                        <optgroup label="Educación Media General">
+                                            <option value="m1">1er Año</option>
+                                            <option value="m2">2do Año</option>
+                                            <option value="m3">3er Año</option>
+                                            <option value="m4">4to Año</option>
+                                            <option value="m5">5to Año</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="alu2_pais_nac" class="form-label">País Nac.</label>
+                                    <select id="alu2_pais_nac" name="alu2_pais_nac" class="form-input">
+                                        <option value="" disabled selected>Seleccione...</option>
+                                        <option value="VE">Venezuela</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="OT">Otro</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="alu2_ciudad_nac" class="form-label">Ciudad Nac.</label>
+                                    <input type="text" id="alu2_ciudad_nac" name="alu2_ciudad_nac" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- ======================== -->
@@ -622,15 +717,15 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="form-label">Nombres Completos <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Nombres <span class="heredado-badge">Heredado</span></label>
                                 <input type="text" id="rep1_nombres" name="rep1_nombres" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Apellidos Completos <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Apellidos <span class="heredado-badge">Heredado</span></label>
                                 <input type="text" id="rep1_apellidos" name="rep1_apellidos" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Fecha de Nacimiento <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Fec. Nacimiento <span class="heredado-badge">Heredado</span></label>
                                 <input type="date" id="rep1_fecha_nac" name="rep1_fecha_nac" class="form-input readonly" readonly>
                             </div>
                             <div>
@@ -671,11 +766,11 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            Lugar de Nacimiento
+                            Lugar Nac.
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="rep1_pais_nac" class="form-label">País de Nacimiento</label>
+                                <label for="rep1_pais_nac" class="form-label">País Nac.</label>
                                 <select id="rep1_pais_nac" name="rep1_pais_nac" class="form-input">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="VE">Venezuela</option>
@@ -692,11 +787,11 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="rep1_ciudad_nac" class="form-label">Ciudad de Nacimiento</label>
+                                <label for="rep1_ciudad_nac" class="form-label">Ciudad Nac.</label>
                                 <input type="text" id="rep1_ciudad_nac" name="rep1_ciudad_nac" class="form-input">
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="rep1_otras_nacionalidades" class="form-label">Otras Nacionalidades <span class="optional-badge">Opcional</span></label>
+                                <label for="rep1_otras_nacionalidades" class="form-label">Otras Nac. <span class="optional-badge">Opcional</span></label>
                                 <input type="text" id="rep1_otras_nacionalidades" name="rep1_otras_nacionalidades" class="form-input">
                             </div>
                         </div>
@@ -713,7 +808,7 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div class="sm:col-span-2">
-                                <label for="rep1_idiomas" class="form-label">Idiomas que habla <span class="optional-badge">Opcional</span></label>
+                                <label for="rep1_idiomas" class="form-label">Idiomas <span class="optional-badge">Opcional</span></label>
                                 <input type="text" id="rep1_idiomas" name="rep1_idiomas" class="form-input" placeholder="Ej: Español, Inglés">
                             </div>
                         </div>
@@ -728,7 +823,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            Dirección de Habitación
+                            Dirección Hab.
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div class="sm:col-span-2">
@@ -736,7 +831,7 @@
                                 <input type="text" id="rep1_direccion" name="rep1_direccion" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label for="rep1_codigo_postal" class="form-label">Código Postal <span class="optional-badge">Opcional</span></label>
+                                <label for="rep1_codigo_postal" class="form-label">Cód. Postal <span class="optional-badge">Opcional</span></label>
                                 <input type="text" id="rep1_codigo_postal" name="rep1_codigo_postal" class="form-input">
                             </div>
                             <div>
@@ -778,15 +873,15 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label class="form-label">Teléfono de Habitación <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Tlf. Habitación <span class="heredado-badge">Heredado</span></label>
                                 <input type="tel" id="rep1_tlf_hab" name="rep1_tlf_hab" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Teléfono Celular <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Celular <span class="heredado-badge">Heredado</span></label>
                                 <input type="tel" id="rep1_celular" name="rep1_celular" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Correo Electrónico <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Correo <span class="heredado-badge">Heredado</span></label>
                                 <input type="email" id="rep1_correo" name="rep1_correo" class="form-input readonly" readonly>
                             </div>
                             <div>
@@ -815,31 +910,31 @@
                                 <input type="text" id="rep1_ocupacion" name="rep1_ocupacion" class="form-input">
                             </div>
                             <div>
-                                <label class="form-label">Empresa donde trabaja <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Empresa <span class="heredado-badge">Heredado</span></label>
                                 <input type="text" id="rep1_empresa" name="rep1_empresa" class="form-input readonly" readonly>
                             </div>
                             <div>
-                                <label class="form-label">Teléfono del Trabajo <span class="heredado-badge">Heredado</span></label>
+                                <label class="form-label">Tlf. Trabajo <span class="heredado-badge">Heredado</span></label>
                                 <input type="tel" id="rep1_tlf_ofic" name="rep1_tlf_ofic" class="form-input readonly" readonly placeholder="Ej: 0212-9876543">
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="rep1_dir_trabajo" class="form-label">Dirección del Trabajo</label>
+                                <label for="rep1_dir_trabajo" class="form-label">Dir. Trabajo</label>
                                 <input type="text" id="rep1_dir_trabajo" name="rep1_dir_trabajo" class="form-input">
                             </div>
                             <div>
-                                <label for="rep1_cp_trabajo" class="form-label">Código Postal del Trabajo <span class="optional-badge">Opcional</span></label>
+                                <label for="rep1_cp_trabajo" class="form-label">C.P. Trabajo <span class="optional-badge">Opcional</span></label>
                                 <input type="text" id="rep1_cp_trabajo" name="rep1_cp_trabajo" class="form-input">
                             </div>
                             <div>
-                                <label for="rep1_ciudad_trabajo" class="form-label">Ciudad del Trabajo</label>
+                                <label for="rep1_ciudad_trabajo" class="form-label">Ciudad Trabajo</label>
                                 <input type="text" id="rep1_ciudad_trabajo" name="rep1_ciudad_trabajo" class="form-input">
                             </div>
                             <div>
-                                <label for="rep1_estado_trabajo" class="form-label">Estado del Trabajo</label>
+                                <label for="rep1_estado_trabajo" class="form-label">Estado Trabajo</label>
                                 <input type="text" id="rep1_estado_trabajo" name="rep1_estado_trabajo" class="form-input">
                             </div>
                             <div>
-                                <label for="rep1_pais_trabajo" class="form-label">País del Trabajo</label>
+                                <label for="rep1_pais_trabajo" class="form-label">País Trabajo</label>
                                 <select id="rep1_pais_trabajo" name="rep1_pais_trabajo" class="form-input">
                                     <option value="" disabled selected>Seleccione...</option>
                                     <option value="VE" selected>Venezuela</option>
@@ -911,15 +1006,15 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="form-label">Nombres Completos <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Nombres <span class="heredado-badge">Heredado</span></label>
                                     <input type="text" id="rep2_nombres" name="rep2_nombres" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label class="form-label">Apellidos Completos <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Apellidos <span class="heredado-badge">Heredado</span></label>
                                     <input type="text" id="rep2_apellidos" name="rep2_apellidos" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label class="form-label">Fecha de Nacimiento <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Fec. Nacimiento <span class="heredado-badge">Heredado</span></label>
                                     <input type="date" id="rep2_fecha_nac" name="rep2_fecha_nac" class="form-input readonly" readonly>
                                 </div>
                                 <div>
@@ -960,11 +1055,11 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                Lugar de Nacimiento
+                                Lugar Nac.
                             </p>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div>
-                                    <label for="rep2_pais_nac" class="form-label">País de Nacimiento</label>
+                                    <label for="rep2_pais_nac" class="form-label">País Nac.</label>
                                     <select id="rep2_pais_nac" name="rep2_pais_nac" class="form-input">
                                         <option value="" disabled selected>Seleccione...</option>
                                         <option value="VE">Venezuela</option>
@@ -981,11 +1076,11 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="rep2_ciudad_nac" class="form-label">Ciudad de Nacimiento</label>
+                                    <label for="rep2_ciudad_nac" class="form-label">Ciudad Nac.</label>
                                     <input type="text" id="rep2_ciudad_nac" name="rep2_ciudad_nac" class="form-input">
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label for="rep2_otras_nacionalidades" class="form-label">Otras Nacionalidades <span class="optional-badge">Opcional</span></label>
+                                    <label for="rep2_otras_nacionalidades" class="form-label">Otras Nac. <span class="optional-badge">Opcional</span></label>
                                     <input type="text" id="rep2_otras_nacionalidades" name="rep2_otras_nacionalidades" class="form-input">
                                 </div>
                             </div>
@@ -1002,7 +1097,7 @@
                             </p>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div class="sm:col-span-2">
-                                    <label for="rep2_idiomas" class="form-label">Idiomas que habla <span class="optional-badge">Opcional</span></label>
+                                    <label for="rep2_idiomas" class="form-label">Idiomas <span class="optional-badge">Opcional</span></label>
                                     <input type="text" id="rep2_idiomas" name="rep2_idiomas" class="form-input" placeholder="Ej: Español, Inglés">
                                 </div>
                             </div>
@@ -1017,7 +1112,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                Dirección de Habitación
+                                Dirección Hab.
                             </p>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div class="sm:col-span-2">
@@ -1025,7 +1120,7 @@
                                     <input type="text" id="rep2_direccion" name="rep2_direccion" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label for="rep2_codigo_postal" class="form-label">Código Postal <span class="optional-badge">Opcional</span></label>
+                                    <label for="rep2_codigo_postal" class="form-label">Cód. Postal <span class="optional-badge">Opcional</span></label>
                                     <input type="text" id="rep2_codigo_postal" name="rep2_codigo_postal" class="form-input">
                                 </div>
                                 <div>
@@ -1067,15 +1162,15 @@
                             </p>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div>
-                                    <label class="form-label">Teléfono de Habitación <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Tlf. Habitación <span class="heredado-badge">Heredado</span></label>
                                     <input type="tel" id="rep2_tlf_hab" name="rep2_tlf_hab" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label class="form-label">Teléfono Celular <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Celular <span class="heredado-badge">Heredado</span></label>
                                     <input type="tel" id="rep2_celular" name="rep2_celular" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label class="form-label">Correo Electrónico <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Correo <span class="heredado-badge">Heredado</span></label>
                                     <input type="email" id="rep2_correo" name="rep2_correo" class="form-input readonly" readonly>
                                 </div>
                                 <div>
@@ -1104,31 +1199,31 @@
                                     <input type="text" id="rep2_ocupacion" name="rep2_ocupacion" class="form-input">
                                 </div>
                                 <div>
-                                    <label class="form-label">Empresa donde trabaja <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Empresa <span class="heredado-badge">Heredado</span></label>
                                     <input type="text" id="rep2_empresa" name="rep2_empresa" class="form-input readonly" readonly>
                                 </div>
                                 <div>
-                                    <label class="form-label">Teléfono del Trabajo <span class="heredado-badge">Heredado</span></label>
+                                    <label class="form-label">Tlf. Trabajo <span class="heredado-badge">Heredado</span></label>
                                     <input type="tel" id="rep2_tlf_ofic" name="rep2_tlf_ofic" class="form-input readonly" readonly>
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label for="rep2_dir_trabajo" class="form-label">Dirección del Trabajo</label>
+                                    <label for="rep2_dir_trabajo" class="form-label">Dir. Trabajo</label>
                                     <input type="text" id="rep2_dir_trabajo" name="rep2_dir_trabajo" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_cp_trabajo" class="form-label">Código Postal del Trabajo <span class="optional-badge">Opcional</span></label>
+                                    <label for="rep2_cp_trabajo" class="form-label">C.P. Trabajo <span class="optional-badge">Opcional</span></label>
                                     <input type="text" id="rep2_cp_trabajo" name="rep2_cp_trabajo" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_ciudad_trabajo" class="form-label">Ciudad del Trabajo</label>
+                                    <label for="rep2_ciudad_trabajo" class="form-label">Ciudad Trabajo</label>
                                     <input type="text" id="rep2_ciudad_trabajo" name="rep2_ciudad_trabajo" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_estado_trabajo" class="form-label">Estado del Trabajo</label>
+                                    <label for="rep2_estado_trabajo" class="form-label">Estado Trabajo</label>
                                     <input type="text" id="rep2_estado_trabajo" name="rep2_estado_trabajo" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_pais_trabajo" class="form-label">País del Trabajo</label>
+                                    <label for="rep2_pais_trabajo" class="form-label">País Trabajo</label>
                                     <select id="rep2_pais_trabajo" name="rep2_pais_trabajo" class="form-input">
                                         <option value="" disabled selected>Seleccione...</option>
                                         <option value="VE" selected>Venezuela</option>
@@ -1149,10 +1244,67 @@
                     </div>
                 </div>
 
-                <!-- ======================== -->
-                <!-- PASO 4: RESUMEN          -->
-                <!-- ======================== -->
+
+                <!-- ========================= -->
+                <!-- PASO 4: DATOS FACTURACIÓN -->
+                <!-- ========================= -->
                 <div id="step-4" class="step-panel p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
+                        </svg>
+                        Datos de Facturación
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Perfil fiscal bajo el cual se emitirán las facturas y recibos de pago.</p>
+
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            Información Fiscal
+                        </p>
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <div class="sm:col-span-2">
+                                <label for="fac_razon_social" class="form-label">Razón Social</label>
+                                <input type="text" id="fac_razon_social" name="fac_razon_social" class="form-input" required>
+                                <span class="form-hint">Nombre de persona natural o jurídica</span>
+                            </div>
+                            <div>
+                                <label for="fac_rif" class="form-label">RIF / Cédula Fiscal</label>
+                                <div class="flex gap-2">
+                                    <select id="fac_rif_tipo" name="fac_rif_tipo" class="form-input" style="width:80px;flex-shrink:0">
+                                        <option value="V">V</option>
+                                        <option value="E">E</option>
+                                        <option value="J">J</option>
+                                        <option value="G">G</option>
+                                    </select>
+                                    <div class="flex-1">
+                                        <input type="text" id="fac_rif" name="fac_rif" class="form-input" required>
+                                        <span class="form-hint">Ej: 12345678-9</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="fac_correo" class="form-label">Correo para Facturas</label>
+                                <input type="email" id="fac_correo" name="fac_correo" class="form-input" required>
+                                <span class="form-hint">Aquí llegarán los comprobantes</span>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="fac_direccion" class="form-label">Dirección Fiscal</label>
+                                <input type="text" id="fac_direccion" name="fac_direccion" class="form-input" required>
+                                <span class="form-hint">Dirección que aparecerá en la factura</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================== -->
+                <!-- PASO 5: RESUMEN          -->
+                <!-- ======================== -->
+                <div id="step-5" class="step-panel p-6 md:p-8">
                     <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
                         <svg class="h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1171,24 +1323,24 @@
                             </h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div class="space-y-3">
-                                    <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-asp-nombres">-</span></div>
-                                    <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-asp-apellidos">-</span></div>
-                                    <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-asp-fecha_nac">-</span></div>
-                                    <div class="resumen-item"><span class="label">Edad:</span><span class="value" id="res-asp-edad">-</span></div>
-                                    <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-asp-sexo">-</span></div>
-                                    <div class="resumen-item"><span class="label">País de nacimiento:</span><span class="value" id="res-asp-pais_nac">-</span></div>
-                                    <div class="resumen-item"><span class="label">Ciudad de nacimiento:</span><span class="value" id="res-asp-ciudad_nac">-</span></div>
-                                    <div class="resumen-item"><span class="label">Otras nacionalidades:</span><span class="value" id="res-asp-otras_nac">-</span></div>
-                                    <div class="resumen-item"><span class="label">Idiomas:</span><span class="value" id="res-asp-idiomas">-</span></div>
+                                    <div class="resumen-item"><span class="label">Nombres:</span><span class="value" id="res-alu-nombres">-</span></div>
+                                    <div class="resumen-item"><span class="label">Apellidos:</span><span class="value" id="res-alu-apellidos">-</span></div>
+                                    <div class="resumen-item"><span class="label">Fecha de nacimiento:</span><span class="value" id="res-alu-fecha_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Edad:</span><span class="value" id="res-alu-edad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Sexo:</span><span class="value" id="res-alu-sexo">-</span></div>
+                                    <div class="resumen-item"><span class="label">País de nacimiento:</span><span class="value" id="res-alu-pais_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad de nacimiento:</span><span class="value" id="res-alu-ciudad_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Otras nacionalidades:</span><span class="value" id="res-alu-otras_nac">-</span></div>
+                                    <div class="resumen-item"><span class="label">Idiomas:</span><span class="value" id="res-alu-idiomas">-</span></div>
                                 </div>
                                 <div class="space-y-3">
-                                    <div class="resumen-item"><span class="label">Grado:</span><span class="value font-semibold text-sky-600" id="res-asp-grado">-</span></div>
-                                    <div class="resumen-item"><span class="label">Año Escolar:</span><span class="value font-semibold text-sky-600" id="res-asp-anio_escolar">-</span></div>
-                                    <div class="resumen-item"><span class="label">Dirección:</span><span class="value" id="res-asp-direccion">-</span></div>
-                                    <div class="resumen-item"><span class="label">Ciudad:</span><span class="value" id="res-asp-ciudad">-</span></div>
-                                    <div class="resumen-item"><span class="label">Municipio:</span><span class="value" id="res-asp-municipio">-</span></div>
-                                    <div class="resumen-item"><span class="label">Estado:</span><span class="value" id="res-asp-estado">-</span></div>
-                                    <div class="resumen-item"><span class="label">Teléfono celular:</span><span class="value" id="res-asp-celular">-</span></div>
+                                    <div class="resumen-item"><span class="label">Grado:</span><span class="value font-semibold text-sky-600" id="res-alu-grado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Año Escolar:</span><span class="value font-semibold text-sky-600" id="res-alu-anio_escolar">-</span></div>
+                                    <div class="resumen-item"><span class="label">Dirección:</span><span class="value" id="res-alu-direccion">-</span></div>
+                                    <div class="resumen-item"><span class="label">Ciudad:</span><span class="value" id="res-alu-ciudad">-</span></div>
+                                    <div class="resumen-item"><span class="label">Municipio:</span><span class="value" id="res-alu-municipio">-</span></div>
+                                    <div class="resumen-item"><span class="label">Estado:</span><span class="value" id="res-alu-estado">-</span></div>
+                                    <div class="resumen-item"><span class="label">Teléfono celular:</span><span class="value" id="res-alu-celular">-</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1290,11 +1442,12 @@
     </div>
 
     <script>
-        const TOTAL_STEPS = 4;
+        const TOTAL_STEPS = 5;
         const STEP_LABELS = [
-            'Datos del Estudiante',
+            'Datos del Alumno',
             'Representante Principal',
             'Segundo Representante',
+            'Datos de Facturación',
             'Resumen y Confirmación'
         ];
         let currentStep = 1;
@@ -1392,19 +1545,19 @@
             }
 
             // Datos del estudiante
-            if (data.asp_nombres) document.getElementById('asp_nombres').value = data.asp_nombres;
-            if (data.asp_apellidos) document.getElementById('asp_apellidos').value = data.asp_apellidos;
-            if (data.asp_fecha_nac) {
-                document.getElementById('asp_fecha_nac').value = data.asp_fecha_nac;
-                document.getElementById('asp_edad').value = calcularEdad(data.asp_fecha_nac);
+            if (data.alu_nombres) document.getElementById('alu_nombres').value = data.alu_nombres;
+            if (data.alu_apellidos) document.getElementById('alu_apellidos').value = data.alu_apellidos;
+            if (data.alu_fecha_nac) {
+                document.getElementById('alu_fecha_nac').value = data.alu_fecha_nac;
+                document.getElementById('alu_edad').value = calcularEdad(data.alu_fecha_nac);
             }
-            if (data.asp_sexo) {
-                const sexoRadios = document.querySelectorAll('input[name="asp_sexo"]');
+            if (data.alu_sexo) {
+                const sexoRadios = document.querySelectorAll('input[name="alu_sexo"]');
                 sexoRadios.forEach(radio => {
-                    if (radio.value === data.asp_sexo) radio.checked = true;
+                    if (radio.value === data.alu_sexo) radio.checked = true;
                 });
             }
-            if (data.asp_grado) document.getElementById('asp_grado').value = getGradoTexto(data.asp_grado);
+            if (data.alu_grado) document.getElementById('alu_grado').value = getGradoTexto(data.alu_grado);
 
             // Datos representante principal
             if (data.rep1_nacionalidad) document.getElementById('rep1_nacionalidad').value = data.rep1_nacionalidad;
@@ -1447,26 +1600,26 @@
 
         function actualizarResumen() {
             // Estudiante
-            document.getElementById('res-asp-nombres').textContent = document.getElementById('asp_nombres').value || '-';
-            document.getElementById('res-asp-apellidos').textContent = document.getElementById('asp_apellidos').value || '-';
-            document.getElementById('res-asp-fecha_nac').textContent = document.getElementById('asp_fecha_nac').value || '-';
-            document.getElementById('res-asp-edad').textContent = document.getElementById('asp_edad').value || '-';
-            const aspSexo = document.querySelector('input[name="asp_sexo"]:checked');
-            document.getElementById('res-asp-sexo').textContent = aspSexo ? (aspSexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
-            document.getElementById('res-asp-pais_nac').textContent = document.getElementById('asp_pais_nac').value ? document.getElementById('asp_pais_nac').options[document.getElementById('asp_pais_nac').selectedIndex].text : '-';
-            document.getElementById('res-asp-ciudad_nac').textContent = document.getElementById('asp_ciudad_nac').value || '-';
-            document.getElementById('res-asp-otras_nac').textContent = document.getElementById('asp_otras_nacionalidades').value || '-';
-            document.getElementById('res-asp-idiomas').textContent = document.getElementById('asp_idiomas').value || '-';
-            document.getElementById('res-asp-direccion').textContent = document.getElementById('asp_direccion').value || '-';
-            document.getElementById('res-asp-codigo_postal').textContent = document.getElementById('asp_codigo_postal').value || '-';
-            document.getElementById('res-asp-ciudad').textContent = document.getElementById('asp_ciudad').value || '-';
-            document.getElementById('res-asp-municipio').textContent = document.getElementById('asp_municipio').value || '-';
-            document.getElementById('res-asp-estado').textContent = document.getElementById('asp_estado').value || '-';
-            document.getElementById('res-asp-pais').textContent = document.getElementById('asp_pais').value ? document.getElementById('asp_pais').options[document.getElementById('asp_pais').selectedIndex].text : '-';
-            document.getElementById('res-asp-tlf_hab').textContent = document.getElementById('asp_tlf_hab').value || '-';
-            document.getElementById('res-asp-celular').textContent = document.getElementById('asp_celular').value || '-';
-            document.getElementById('res-asp-grado').textContent = document.getElementById('asp_grado').value || '-';
-            document.getElementById('res-asp-anio_escolar').textContent = document.getElementById('asp_anio_escolar').value || '-';
+            document.getElementById('res-alu-nombres').textContent = document.getElementById('alu_nombres').value || '-';
+            document.getElementById('res-alu-apellidos').textContent = document.getElementById('alu_apellidos').value || '-';
+            document.getElementById('res-alu-fecha_nac').textContent = document.getElementById('alu_fecha_nac').value || '-';
+            document.getElementById('res-alu-edad').textContent = document.getElementById('alu_edad').value || '-';
+            const aspSexo = document.querySelector('input[name="alu_sexo"]:checked');
+            document.getElementById('res-alu-sexo').textContent = aspSexo ? (aspSexo.value === 'M' ? 'Masculino' : 'Femenino') : '-';
+            document.getElementById('res-alu-pais_nac').textContent = document.getElementById('alu_pais_nac').value ? document.getElementById('alu_pais_nac').options[document.getElementById('alu_pais_nac').selectedIndex].text : '-';
+            document.getElementById('res-alu-ciudad_nac').textContent = document.getElementById('alu_ciudad_nac').value || '-';
+            document.getElementById('res-alu-otras_nac').textContent = document.getElementById('alu_otras_nacionalidades').value || '-';
+            document.getElementById('res-alu-idiomas').textContent = document.getElementById('alu_idiomas').value || '-';
+            document.getElementById('res-alu-direccion').textContent = document.getElementById('alu_direccion').value || '-';
+            document.getElementById('res-alu-codigo_postal').textContent = document.getElementById('alu_codigo_postal').value || '-';
+            document.getElementById('res-alu-ciudad').textContent = document.getElementById('alu_ciudad').value || '-';
+            document.getElementById('res-alu-municipio').textContent = document.getElementById('alu_municipio').value || '-';
+            document.getElementById('res-alu-estado').textContent = document.getElementById('alu_estado').value || '-';
+            document.getElementById('res-alu-pais').textContent = document.getElementById('alu_pais').value ? document.getElementById('alu_pais').options[document.getElementById('alu_pais').selectedIndex].text : '-';
+            document.getElementById('res-alu-tlf_hab').textContent = document.getElementById('alu_tlf_hab').value || '-';
+            document.getElementById('res-alu-celular').textContent = document.getElementById('alu_celular').value || '-';
+            document.getElementById('res-alu-grado').textContent = document.getElementById('alu_grado').value || '-';
+            document.getElementById('res-alu-anio_escolar').textContent = document.getElementById('alu_anio_escolar').value || '-';
 
             // Rep 1
             document.getElementById('res-rep1-nombres').textContent = document.getElementById('rep1_nombres').value || '-';
@@ -1546,8 +1699,8 @@
             }
             
             // Manejar radios
-            const aspSexo = document.querySelector('input[name="asp_sexo"]:checked');
-            if (aspSexo) data.asp_sexo = aspSexo.value;
+            const aspSexo = document.querySelector('input[name="alu_sexo"]:checked');
+            if (aspSexo) data.alu_sexo = aspSexo.value;
             
             const rep1Sexo = document.querySelector('input[name="rep1_sexo"]:checked');
             if (rep1Sexo) data.rep1_sexo = rep1Sexo.value;
@@ -1565,8 +1718,8 @@
         }
 
         // Event listeners para calcular edad automáticamente
-        document.getElementById('asp_fecha_nac').addEventListener('change', function() {
-            document.getElementById('asp_edad').value = calcularEdad(this.value);
+        document.getElementById('alu_fecha_nac').addEventListener('change', function() {
+            document.getElementById('alu_edad').value = calcularEdad(this.value);
         });
 
         document.getElementById('rep1_fecha_nac').addEventListener('change', function() {
@@ -1576,6 +1729,12 @@
         document.getElementById('rep2_fecha_nac').addEventListener('change', function() {
             document.getElementById('rep2_edad').value = calcularEdad(this.value);
         });
+
+
+        function toggleAlu2(checked) {
+            const fields = document.getElementById('alu2-fields');
+            if (fields) fields.classList.toggle('hidden', !checked);
+        }
 
         // Init
         renderProgressBar();

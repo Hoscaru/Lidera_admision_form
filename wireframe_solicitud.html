@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de Cupo — Formulario Multi-Paso</title>
+    <title>Planilla de Solicitud de Cupo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -279,7 +279,7 @@
 
         <!-- Header -->
         <div class="mb-8 text-center">
-            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Formulario de Solicitud de Cupo</h1>
+            <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Planilla de Solicitud de Cupo</h1>
             <p class="text-slate-500 mt-1 text-sm">Complete todos los pasos para iniciar el proceso de admisión escolar.
             </p>
         </div>
@@ -337,18 +337,18 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="rep1_nombres" class="form-label">Nombres Completos</label>
+                                <label for="rep1_nombres" class="form-label">Nombres</label>
                                 <input type="text" id="rep1_nombres" name="rep1_nombres" class="form-input" required>
                                 <span class="form-hint">Ej: María Alejandra</span>
                             </div>
                             <div>
-                                <label for="rep1_apellidos" class="form-label">Apellidos Completos</label>
+                                <label for="rep1_apellidos" class="form-label">Apellidos</label>
                                 <input type="text" id="rep1_apellidos" name="rep1_apellidos" class="form-input"
                                     required>
                                 <span class="form-hint">Ej: Pérez Gómez</span>
                             </div>
                             <div>
-                                <label for="rep1_fecha_nac" class="form-label">Fecha de Nacimiento</label>
+                                <label for="rep1_fecha_nac" class="form-label">Fec. Nacimiento</label>
                                 <input type="date" id="rep1_fecha_nac" name="rep1_fecha_nac" class="form-input"
                                     required>
                             </div>
@@ -366,23 +366,23 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="rep1_correo" class="form-label">Correo Electrónico</label>
+                                <label for="rep1_correo" class="form-label">Correo</label>
                                 <input type="email" id="rep1_correo" name="rep1_correo" class="form-input" required>
                                 <span class="form-hint">Ej: maria.perez@gmail.com</span>
                             </div>
                             <div>
-                                <label for="rep1_celular" class="form-label">Teléfono Celular</label>
+                                <label for="rep1_celular" class="form-label">Celular</label>
                                 <input type="tel" id="rep1_celular" name="rep1_celular" class="form-input" required>
                                 <span class="form-hint">Ej: 0414-1234567</span>
                             </div>
                             <div>
-                                <label for="rep1_tlf_hab" class="form-label">Teléfono Habitación <span
+                                <label for="rep1_tlf_hab" class="form-label">Tlf. Habitación <span
                                         class="optional-badge">Opcional</span></label>
                                 <input type="tel" id="rep1_tlf_hab" name="rep1_tlf_hab" class="form-input">
                                 <span class="form-hint">Ej: 0212-1234567</span>
                             </div>
                             <div>
-                                <label for="rep1_tlf_ofic" class="form-label">Teléfono Oficina <span
+                                <label for="rep1_tlf_ofic" class="form-label">Tlf. Oficina <span
                                         class="optional-badge">Opcional</span></label>
                                 <input type="tel" id="rep1_tlf_ofic" name="rep1_tlf_ofic" class="form-input">
                                 <span class="form-hint">Ej: 0212-9876543</span>
@@ -442,7 +442,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                             </svg>
-                            Vínculo con el Aspirante
+                            Vínculo con el Alumno
                         </p>
                         <div>
                             <label for="rep1_parentesco" class="form-label">Parentesco Legal</label>
@@ -455,6 +455,47 @@
                                 <option value="hermano">Hermana / Hermano Mayor</option>
                                 <option value="tutor">Tutor(a) Legal Autorizado</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <!-- Sub-sección: Motivo de Interés -->
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            ¿Cómo se enteró de nuestra institución?
+                        </p>
+                        <div>
+                            <label for="fuente_info" class="form-label">¿Quién le recomendó inscribirse a este Colegio?</label>
+                            <input type="text" id="fuente_info" name="fuente_info" class="form-input" placeholder="Ej: Redes sociales, Familiar, Visita a la institución..." required>
+                        </div>
+                    </div>
+
+                    <!-- Sub-sección: Expectativas -->
+                    <div class="sub-section">
+                        <p class="sub-section-title">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                            Expectativas de la Institución
+                        </p>
+                        <p class="text-xs text-slate-500 mb-4">Indique en orden de prioridad 3 calificativos que describan lo que busca de esta institución educativa</p>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <label for="expectativa_1" class="form-label">1. Principal</label>
+                                <input type="text" id="expectativa_1" name="expectativa_1" class="form-input" placeholder="Ej: Excelencia académica, Valores, Deportes..." required>
+                            </div>
+                            <div>
+                                <label for="expectativa_2" class="form-label">2. Segunda</label>
+                                <input type="text" id="expectativa_2" name="expectativa_2" class="form-input" placeholder="Ej: Ambiente seguro, Bilingüismo, Arte..." required>
+                            </div>
+                            <div>
+                                <label for="expectativa_3" class="form-label">3. Tercera</label>
+                                <input type="text" id="expectativa_3" name="expectativa_3" class="form-input" placeholder="Ej: Costo accesible, Ubicación, Instalaciones..." required>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -514,15 +555,15 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="rep2_nombres" class="form-label">Nombres Completos</label>
+                                    <label for="rep2_nombres" class="form-label">Nombres</label>
                                     <input type="text" id="rep2_nombres" name="rep2_nombres" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_apellidos" class="form-label">Apellidos Completos</label>
+                                    <label for="rep2_apellidos" class="form-label">Apellidos</label>
                                     <input type="text" id="rep2_apellidos" name="rep2_apellidos" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_fecha_nac" class="form-label">Fecha de Nacimiento</label>
+                                    <label for="rep2_fecha_nac" class="form-label">Fec. Nacimiento</label>
                                     <input type="date" id="rep2_fecha_nac" name="rep2_fecha_nac" class="form-input">
                                 </div>
                             </div>
@@ -537,21 +578,21 @@
                             </p>
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div>
-                                    <label for="rep2_correo" class="form-label">Correo Electrónico</label>
+                                    <label for="rep2_correo" class="form-label">Correo</label>
                                     <input type="email" id="rep2_correo" name="rep2_correo" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_celular" class="form-label">Teléfono Celular</label>
+                                    <label for="rep2_celular" class="form-label">Celular</label>
                                     <input type="tel" id="rep2_celular" name="rep2_celular" class="form-input">
                                     <span class="form-hint">Ej: 0424-9876543</span>
                                 </div>
                                 <div>
-                                    <label for="rep2_tlf_hab" class="form-label">Teléfono Habitación <span
+                                    <label for="rep2_tlf_hab" class="form-label">Tlf. Habitación <span
                                             class="optional-badge">Opcional</span></label>
                                     <input type="tel" id="rep2_tlf_hab" name="rep2_tlf_hab" class="form-input">
                                 </div>
                                 <div>
-                                    <label for="rep2_tlf_ofic" class="form-label">Teléfono Oficina <span
+                                    <label for="rep2_tlf_ofic" class="form-label">Tlf. Oficina <span
                                             class="optional-badge">Opcional</span></label>
                                     <input type="tel" id="rep2_tlf_ofic" name="rep2_tlf_ofic" class="form-input">
                                 </div>
@@ -606,7 +647,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                 </svg>
-                                Vínculo con el Aspirante
+                                Vínculo con el Alumno
                             </p>
                             <div>
                                 <label for="rep2_parentesco" class="form-label">Parentesco Legal <span
@@ -625,109 +666,49 @@
                     </div>
                 </div>
 
-                <!-- ========================= -->
-                <!-- PASO 3: DATOS FACTURACIÓN -->
-                <!-- ========================= -->
+                <!-- ======================== -->
+                <!-- PASO 3: DATOS DEL ALUMNO -->
+                <!-- ======================== -->
                 <div id="step-3" class="step-panel p-6 md:p-8">
-                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
-                        <svg class="h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
-                        </svg>
-                        Datos de Facturación
-                    </h2>
-                    <p class="text-xs text-slate-500 mb-6">Perfil fiscal bajo el cual se emitirán las facturas y recibos
-                        de pago de la inscripción.</p>
-
-                    <div class="sub-section">
-                        <p class="sub-section-title">
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
-                            Información Fiscal
-                        </p>
-                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                            <div class="sm:col-span-2">
-                                <label for="fac_razon_social" class="form-label">Razón Social</label>
-                                <input type="text" id="fac_razon_social" name="fac_razon_social" class="form-input"
-                                    required>
-                                <span class="form-hint">Nombre de persona natural o jurídica a quien se emite la
-                                    factura</span>
-                            </div>
-                            <div>
-                                <label for="fac_rif" class="form-label">RIF / Cédula Fiscal</label>
-                                <div class="flex gap-2">
-                                    <select id="fac_rif_tipo" name="fac_rif_tipo" class="form-input"
-                                        style="width:80px;flex-shrink:0">
-                                        <option value="V">V</option>
-                                        <option value="E">E</option>
-                                        <option value="J">J</option>
-                                        <option value="G">G</option>
-                                    </select>
-                                    <div class="flex-1">
-                                        <input type="text" id="fac_rif" name="fac_rif" class="form-input" required>
-                                        <span class="form-hint">Ej: 12345678-9</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="fac_correo" class="form-label">Correo para Facturas</label>
-                                <input type="email" id="fac_correo" name="fac_correo" class="form-input" required>
-                                <span class="form-hint">Aquí llegarán los comprobantes de pago</span>
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label for="fac_direccion" class="form-label">Dirección Fiscal</label>
-                                <input type="text" id="fac_direccion" name="fac_direccion" class="form-input" required>
-                                <span class="form-hint">Dirección que debe aparecer en la factura</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ======================== -->
-                <!-- PASO 4: DATOS ASPIRANTE  -->
-                <!-- ======================== -->
-                <div id="step-4" class="step-panel p-6 md:p-8">
                     <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
                         <svg class="h-5 w-5 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
-                        Datos del Aspirante
+                        Datos del Alumno
                     </h2>
                     <p class="text-xs text-slate-500 mb-6">Información del estudiante que solicita el cupo.</p>
 
-                    <!-- Identificación aspirante -->
+                    <!-- Identificación alumno -->
                     <div class="sub-section">
                         <p class="sub-section-title">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0" />
                             </svg>
-                            Identificación del Aspirante
+                            Identificación del Alumno
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="asp_nombres" class="form-label">Nombres Completos</label>
-                                <input type="text" id="asp_nombres" name="asp_nombres" class="form-input" required>
+                                <label for="alu_nombres" class="form-label">Nombres</label>
+                                <input type="text" id="alu_nombres" name="alu_nombres" class="form-input" required>
                             </div>
                             <div>
-                                <label for="asp_apellidos" class="form-label">Apellidos Completos</label>
-                                <input type="text" id="asp_apellidos" name="asp_apellidos" class="form-input" required>
+                                <label for="alu_apellidos" class="form-label">Apellidos</label>
+                                <input type="text" id="alu_apellidos" name="alu_apellidos" class="form-input" required>
                             </div>
                             <div>
-                                <label for="asp_fecha_nac" class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" id="asp_fecha_nac" name="asp_fecha_nac" class="form-input" required>
+                                <label for="alu_fecha_nac" class="form-label">Fec. Nacimiento</label>
+                                <input type="date" id="alu_fecha_nac" name="alu_fecha_nac" class="form-input" required>
                             </div>
                             <div>
                                 <label class="form-label">Sexo</label>
                                 <div class="radio-group mt-2">
                                     <label class="radio-option">
-                                        <input type="radio" name="asp_sexo" value="M"> Masculino
+                                        <input type="radio" name="alu_sexo" value="M"> Masculino
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="asp_sexo" value="F"> Femenino
+                                        <input type="radio" name="alu_sexo" value="F"> Femenino
                                     </label>
                                 </div>
                             </div>
@@ -746,8 +727,8 @@
                         </p>
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <div>
-                                <label for="asp_grado" class="form-label">Grado / Año a Cursar</label>
-                                <select id="asp_grado" name="asp_grado" class="form-input" required>
+                                <label for="alu_grado" class="form-label">Grado / Año a Cursar</label>
+                                <select id="alu_grado" name="alu_grado" class="form-input" required>
                                     <option value="" disabled selected>Seleccione el nivel...</option>
                                     <optgroup label="Educación Inicial">
                                         <option value="mat">Maternal</option>
@@ -773,10 +754,72 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="asp_colegio" class="form-label">Colegio de Procedencia <span
+                                <label for="alu_colegio" class="form-label">Colegio de Procedencia <span
                                         class="optional-badge">Opcional</span></label>
-                                <input type="text" id="asp_colegio" name="asp_colegio" class="form-input">
+                                <input type="text" id="alu_colegio" name="alu_colegio" class="form-input">
                                 <span class="form-hint">Nombre completo de la institución anterior</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Añadir Nuevo Alumno -->
+                    <div class="mt-8 flex items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl mb-6">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggle-alu2" onchange="toggleAlu2(this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-700">Añadir otro alumno a esta solicitud</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Si desea solicitar cupo para un hermano o familiar
+                                adicional.</p>
+                        </div>
+                    </div>
+
+                    <div id="alu2-fields" class="hidden sub-section bg-slate-50 border-blue-100">
+                        <p class="sub-section-title text-blue-600 border-blue-100">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            Datos del Segundo Alumno
+                        </p>
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <div>
+                                <label for="alu2_nombres" class="form-label">Nombres</label>
+                                <input type="text" id="alu2_nombres" name="alu2_nombres" class="form-input">
+                            </div>
+                            <div>
+                                <label for="alu2_apellidos" class="form-label">Apellidos</label>
+                                <input type="text" id="alu2_apellidos" name="alu2_apellidos" class="form-input">
+                            </div>
+                            <div>
+                                <label for="alu2_fecha_nac" class="form-label">Fec. Nacimiento</label>
+                                <input type="date" id="alu2_fecha_nac" name="alu2_fecha_nac" class="form-input">
+                            </div>
+                            <div>
+                                <label class="form-label">Sexo</label>
+                                <div class="radio-group mt-2">
+                                    <label class="radio-option"><input type="radio" name="alu2_sexo" value="M">
+                                        Masculino</label>
+                                    <label class="radio-option"><input type="radio" name="alu2_sexo" value="F">
+                                        Femenino</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="alu2_grado" class="form-label">Grado a Cursar</label>
+                                <select id="alu2_grado" name="alu2_grado" class="form-input">
+                                    <option value="" disabled selected>Seleccione el nivel...</option>
+                                    <option value="mat">Maternal</option>
+                                    <option value="pre1">Preescolar Nivel I</option>
+                                    <option value="p1">1er Grado</option>
+                                    <option value="m1">1er Año</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="alu2_colegio" class="form-label">Colegio Procedencia <span
+                                        class="optional-badge">Opcional</span></label>
+                                <input type="text" id="alu2_colegio" name="alu2_colegio" class="form-input">
                             </div>
                         </div>
                     </div>
@@ -796,6 +839,54 @@
                     </div>
                 </div>
 
+
+                <!-- ======================== -->
+                <!-- PASO 4: RESUMEN          -->
+                <!-- ======================== -->
+                <div id="step-4" class="step-panel p-6 md:p-8">
+                    <h2 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                        <svg class="h-5 w-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Resumen de la Solicitud
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">Revise los datos antes de enviar.</p>
+
+                    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                        <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">
+                            Representante Principal</h3>
+                        <div class="grid grid-cols-2 gap-2 text-sm mb-4">
+                            <div class="text-slate-500">Cédula:</div>
+                            <div id="res_rep1_cedula" class="font-medium">-</div>
+                            <div class="text-slate-500">Nombre:</div>
+                            <div id="res_rep1_nombre" class="font-medium">-</div>
+                            <div class="text-slate-500">Contacto:</div>
+                            <div id="res_rep1_contacto" class="font-medium">-</div>
+                        </div>
+
+                        <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">Alumno 1
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2 text-sm mb-4">
+                            <div class="text-slate-500">Nombre:</div>
+                            <div id="res_alu1_nombre" class="font-medium">-</div>
+                            <div class="text-slate-500">Grado:</div>
+                            <div id="res_alu1_grado" class="font-medium">-</div>
+                        </div>
+
+                        <div id="res_alu2_container" class="hidden">
+                            <h3 class="font-semibold text-sm text-slate-800 border-b border-slate-200 pb-2 mb-3">Alumno
+                                2</h3>
+                            <div class="grid grid-cols-2 gap-2 text-sm mb-4">
+                                <div class="text-slate-500">Nombre:</div>
+                                <div id="res_alu2_nombre" class="font-medium">-</div>
+                                <div class="text-slate-500">Grado:</div>
+                                <div id="res_alu2_grado" class="font-medium">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- ======================== -->
                 <!-- NAVIGATION FOOTER        -->
                 <!-- ======================== -->
@@ -804,7 +895,8 @@
                         Anterior</button>
                     <div class="flex-1"></div>
                     <button type="button" id="btn-next" class="btn-next" onclick="changeStep(1)">Siguiente →</button>
-                    <button type="button" id="btn-submit" class="btn-submit hidden" onclick="guardarYContinuar()">✓ Guardar y Continuar a Inscripción →</button>
+                    <button type="button" id="btn-submit" class="btn-submit hidden" onclick="guardarYContinuar()">✓
+                        Guardar y Continuar a Inscripción →</button>
                 </div>
 
             </form>
@@ -815,36 +907,36 @@
 
     <script>
         const TOTAL_STEPS = 4;
-        
+
         function guardarYContinuar() {
             const form = document.getElementById('multi-step-form');
-            
+
             // Recopilar todos los datos del formulario
             const formData = new FormData(form);
             const data = {};
-            
+
             for (let [key, value] of formData.entries()) {
                 data[key] = value;
             }
-            
+
             // Manejar radios manualmente
-            const aspSexo = document.querySelector('input[name="asp_sexo"]:checked');
-            if (aspSexo) data.asp_sexo = aspSexo.value;
-            
+            const aspSexo = document.querySelector('input[name="alu_sexo"]:checked');
+            if (aspSexo) data.alu_sexo = aspSexo.value;
+
             // Incluir estado del segundo representante
             data.tiene_segundo_representante = document.getElementById('toggle-rep2').checked;
-            
+
             // Guardar en localStorage
             localStorage.setItem('solicitud_cupo_data', JSON.stringify(data));
-            
+
             // Redireccionar a inscripción
             window.location.href = 'wireframe_inscripcion.html';
         }
         const STEP_LABELS = [
             'Representante Principal',
             'Segundo Representante',
-            'Datos de Facturación',
-            'Datos del Aspirante y Envío'
+            'Datos del Alumno',
+            'Resumen'
         ];
         let currentStep = 1;
 
@@ -871,6 +963,25 @@
         }
 
         function showStep(step) {
+            if (step === 4) {
+                document.getElementById('res_rep1_cedula').textContent = document.getElementById('rep1_nacionalidad').value + '-' + document.getElementById('rep1_cedula').value;
+                document.getElementById('res_rep1_nombre').textContent = document.getElementById('rep1_nombres').value + ' ' + document.getElementById('rep1_apellidos').value;
+                document.getElementById('res_rep1_contacto').textContent = document.getElementById('rep1_celular').value + ' | ' + document.getElementById('rep1_correo').value;
+
+                document.getElementById('res_alu1_nombre').textContent = document.getElementById('alu_nombres').value + ' ' + document.getElementById('alu_apellidos').value;
+                var el = document.getElementById('alu_grado');
+                document.getElementById('res_alu1_grado').textContent = el ? (el.options[el.selectedIndex]?.text || '-') : '-';
+
+                if (document.getElementById('toggle-alu2') && document.getElementById('toggle-alu2').checked) {
+                    document.getElementById('res_alu2_container').classList.remove('hidden');
+                    document.getElementById('res_alu2_nombre').textContent = document.getElementById('alu2_nombres').value + ' ' + document.getElementById('alu2_apellidos').value;
+                    var el2 = document.getElementById('alu2_grado');
+                    document.getElementById('res_alu2_grado').textContent = el2 ? (el2.options[el2.selectedIndex]?.text || '-') : '-';
+                } else if (document.getElementById('res_alu2_container')) {
+                    document.getElementById('res_alu2_container').classList.add('hidden');
+                }
+            }
+
             document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
             document.getElementById(`step-${step}`).classList.add('active');
             const prevBtn = document.getElementById('btn-prev');
@@ -893,6 +1004,11 @@
         function toggleRep2(checked) {
             const fields = document.getElementById('rep2-fields');
             fields.classList.toggle('hidden', !checked);
+        }
+
+        function toggleAlu2(checked) {
+            const fields = document.getElementById('alu2-fields');
+            if (fields) fields.classList.toggle('hidden', !checked);
         }
 
         // Init

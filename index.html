@@ -225,7 +225,7 @@
                                 <span></span>
                             </div>
 
-                            <div class="category-header text-sky-600">[ Datos Básicos del Aspirante ]</div>
+                            <div class="category-header text-sky-600">[ Datos del Alumno ]</div>
                             <div class="attribute-row"><span></span> <span>nombres</span> <span></span></div>
                             <div class="attribute-row"><span></span> <span>apellidos</span> <span></span></div>
                             <div class="attribute-row"><span></span> <span>fecha_nacimiento</span> <span></span></div>
@@ -239,31 +239,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Table: Documento_Digital -->
-                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
-                        id="card-documento">
-                        <div class="bg-slate-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
-                            <svg class="w-5 h-5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
-                                </path>
-                            </svg>
-                            <span>Documento_Digital</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_documento</span>
-                                <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span>id_solicitud</span>
-                                <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span>tipo_documento</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>url_archivo</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>validado</span> <span></span></div>
-                        </div>
-                    </div>
                 </div>
+
 
                 <!-- COLUMNA 2: REPRESENTANTE / FACTURACIÓN -->
                 <div class="flex flex-col gap-16 flex-1 border-l-2 border-r-2 border-slate-100 lg:px-6">
@@ -289,149 +266,189 @@
                                 class="ml-auto text-xs bg-emerald-600 px-2 py-1 rounded-full border border-emerald-400">Cuenta
                                 Base</span>
                         </div>
-                        <div class="flex flex-col">
-                            <div class="attribute-row"><span class="pk-indicator">PK</span>
-                                <span>id_representante</span> <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span
-                                    class="font-medium text-slate-800">cedula</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>nombres</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>apellidos</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>nacionalidad</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>correo_electronico</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>celular</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>telefonos (hab, ofic)</span> <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span>direccion_habitacion</span> <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span>profesion_ocupacion</span> <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span>empresa_trabajo</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>nivel_educativo</span> <span></span></div>
+                        <div class="attribute-row"><span class="pk-indicator">PK</span>
+                            <span>id_representante</span> <span class="w-4"></span>
                         </div>
-                    </div>
+                        <div class="attribute-row"><span></span> <span class="font-medium text-slate-800">cedula</span>
+                            <span></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>nacionalidad</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>nombres</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>apellidos</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>fecha_nacimiento</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>sexo</span> <span class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>estado_civil</span> <span class="w-4"></span>
+                        </div>
 
-                    <!-- Table: Datos_Facturacion -->
-                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
-                        id="card-datos-facturacion">
-                        <div class="bg-teal-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
-                            <svg class="w-5 h-5 text-teal-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                                </path>
-                            </svg>
-                            <span>Datos_Facturacion</span>
+                        <div class="category-header text-emerald-600">[ Contacto ]</div>
+                        <div class="attribute-row"><span></span> <span>correo_electronico</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>celular</span> <span class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>telefono_habitacion</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>telefono_oficina</span> <span class="w-4"></span>
                         </div>
-                        <div class="flex flex-col">
-                            <div class="attribute-row"><span class="pk-indicator">PK</span>
-                                <span>id_datos_facturacion</span> <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span class="fk-indicator">FK</span>
-                                <span>id_representante</span> <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span>razon_social</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span
-                                    class="font-medium text-slate-800">rif_cedula</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>direccion_fiscal</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>correo_electronico_facturacion</span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
 
+                        <div class="category-header text-emerald-600">[ Ubicación ]</div>
+                        <div class="attribute-row"><span></span> <span>direccion_habitacion</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>codigo_postal</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>municipio, estado, pais</span> <span
+                                class="w-4"></span></div>
+
+                        <div class="category-header text-emerald-600">[ Origen ]</div>
+                        <div class="attribute-row"><span></span> <span>pais_nacimiento</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>ciudad_nacimiento</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>otras_nacionalidades</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>idiomas</span> <span class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>religion</span> <span class="w-4"></span></div>
+
+                        <div class="category-header text-emerald-600">[ Profesional ]</div>
+                        <div class="attribute-row"><span></span> <span>nivel_educativo</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>profesion, ocupacion</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>empresa_trabajo</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>cargo, direccion_trabajo</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>estado_trabajo, pais_trabajo</span> <span
+                                class="w-4"></span></div>
+                    </div>
                 </div>
 
-                <!-- COLUMNA 3: ALUMNO Y TRANSACCIONAL -->
-                <div class="flex flex-col gap-16 flex-1">
-                    <h2 class="column-title">
-                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                            <path
-                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
-                            </path>
+                <!-- Table: Datos_Facturacion -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                    id="card-datos-facturacion">
+                    <div class="bg-teal-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                        <svg class="w-5 h-5 text-teal-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222">
+                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
                             </path>
                         </svg>
-                        3. Alumnado y Académico
-                    </h2>
-
-                    <!-- Table: Alumno -->
-                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
-                        id="card-alumno">
-                        <div class="bg-violet-600 px-5 py-4 font-bold text-white flex gap-3 items-center">
-                            <svg class="w-5 h-5 text-violet-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                </path>
-                            </svg>
-                            <span>Alumno</span>
-                            <span
-                                class="ml-auto text-xs bg-violet-700 px-2 py-1 rounded-full border border-violet-500">Maestro
-                                Permanente</span>
+                        <span>Datos_Facturacion</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="attribute-row"><span class="pk-indicator">PK</span>
+                            <span>id_datos_facturacion</span> <span class="w-4"></span>
                         </div>
-                        <div class="flex flex-col">
-                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_alumno</span> <span
-                                    class="w-4"></span></div>
-                            <div class="attribute-row"><span></span> <span
-                                    class="font-medium text-slate-800">cedula_escolar</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span
-                                    class="font-medium text-slate-800">cedula <span class="text-xs text-slate-400">(Opcional)</span></span> <span></span></div>
-
-                            <div class="category-header text-violet-600">[ Heredado de Solicitud ]</div>
-                            <div class="attribute-row"><span></span> <span class="italic">nombres</span> <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span class="italic">apellidos</span> <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span class="italic">fecha_nacimiento</span>
-                                <span></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span class="italic">sexo</span> <span></span>
-                            </div>
-
-                            <div class="category-header text-violet-600">[ Fase 2: Médico ]</div>
-                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span
-                                    class="text-slate-400">ficha_medica_id (Tentativo)</span> <span class="w-4"></span>
-                            </div>
+                        <div class="attribute-row"><span class="fk-indicator">FK</span>
+                            <span>id_representante</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span>razon_social</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span
+                                class="font-medium text-slate-800">rif_cedula</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>direccion_fiscal</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>correo_electronico_facturacion</span>
+                            <span></span>
                         </div>
                     </div>
-
-                    <!-- Table: Inscripcion -->
-                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
-                        id="card-inscripcion">
-                        <div class="bg-rose-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
-                            <svg class="w-5 h-5 text-rose-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
-                                </path>
-                            </svg>
-                            <span>Inscripcion</span>
-                            <span
-                                class="ml-auto text-xs bg-rose-600 px-2 py-1 rounded-full border border-rose-400">Histórico
-                                Escolar</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_inscripcion</span>
-                                <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span class="fk-indicator">FK</span> <span>id_alumno</span> <span
-                                    class="w-4"></span></div>
-                            <div class="attribute-row"><span class="fk-indicator">FK</span>
-                                <span>id_datos_facturacion</span> <span class="w-4"></span>
-                            </div>
-                            <div class="attribute-row"><span></span> <span
-                                    class="font-medium text-slate-800">id_periodo_academico</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>monto_total</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>estatus_pago</span> <span></span></div>
-                            <div class="attribute-row"><span></span> <span>fecha_pago_confirmado</span> <span></span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
+
+            <!-- COLUMNA 3: ALUMNO Y TRANSACCIONAL -->
+            <div class="flex flex-col gap-16 flex-1">
+                <h2 class="column-title">
+                    <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path
+                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222">
+                        </path>
+                    </svg>
+                    3. Alumnado y Académico
+                </h2>
+
+                <!-- Table: Alumno -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden" id="card-alumno">
+                    <div class="bg-violet-600 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                        <svg class="w-5 h-5 text-violet-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
+                        </svg>
+                        <span>Alumno</span>
+                        <span
+                            class="ml-auto text-xs bg-violet-700 px-2 py-1 rounded-full border border-violet-500">Maestro
+                            Permanente</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_alumno</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span
+                                class="font-medium text-slate-800">cedula_escolar</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span class="font-medium text-slate-800">cedula
+                                <span class="text-xs text-slate-400">(Opcional)</span></span> <span></span></div>
+
+                        <div class="category-header text-violet-600">[ Heredado de Solicitud ]</div>
+                        <div class="attribute-row"><span></span> <span class="italic">nombres, apellidos</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span class="italic">fecha_nacimiento, sexo</span>
+                            <span class="w-4"></span>
+                        </div>
+
+                        <div class="category-header text-violet-600">[ Datos Complementarios ]</div>
+                        <div class="attribute-row"><span></span> <span>pais, ciudad_nacimiento</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>otras_nacionalidades, idiomas</span> <span
+                                class="w-4"></span></div>
+
+                        <div class="category-header text-violet-600">[ Ubicación ]</div>
+                        <div class="attribute-row"><span></span> <span>direccion, codigo_postal</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span></span> <span>ciudad, municipio, estado, pais</span> <span
+                                class="w-4"></span></div>
+
+                        <div class="category-header text-violet-600">[ Contacto ]</div>
+                        <div class="attribute-row"><span></span> <span>telefono_habitacion, celular</span> <span
+                                class="w-4"></span></div>
+                    </div>
+                </div>
+
+                <!-- Table: Inscripcion -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden"
+                    id="card-inscripcion">
+                    <div class="bg-rose-500 px-5 py-4 font-bold text-white flex gap-3 items-center">
+                        <svg class="w-5 h-5 text-rose-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
+                        <span>Inscripcion</span>
+                        <span
+                            class="ml-auto text-xs bg-rose-600 px-2 py-1 rounded-full border border-rose-400">Histórico
+                            Escolar</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="attribute-row"><span class="pk-indicator">PK</span> <span>id_inscripcion</span>
+                            <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span class="fk-indicator">FK</span> <span>id_alumno</span> <span
+                                class="w-4"></span></div>
+                        <div class="attribute-row"><span class="fk-indicator">FK</span>
+                            <span>id_datos_facturacion</span> <span class="w-4"></span>
+                        </div>
+                        <div class="attribute-row"><span></span> <span
+                                class="font-medium text-slate-800">id_periodo_academico</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>grado_cursado</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>monto_total</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>estatus_pago</span> <span></span></div>
+                        <div class="attribute-row"><span></span> <span>fecha_pago_confirmado</span> <span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+    </div>
     </div>
 
     <!-- Floating Download Button -->
@@ -537,14 +554,12 @@
             // Relaciones
             drawLine('card-representante', 'card-solicitud', 'svg-container', '1:N', 'Gestiona', false);
             drawLine('card-representante', 'card-datos-facturacion', 'svg-container', '1:N', 'Posee', false);
-            drawLine('card-solicitud', 'card-documento', 'svg-container', '1:N', 'Contiene', false);
 
             // Solicitud -> Alumno (Normalización 1:1)
-            // Curvamos esta línea hacia abajo usando curveExtraY = 280 para que no choque con la tarjeta "Representante" y el texto flote libre.
-            drawLine('card-solicitud', 'card-alumno', 'svg-container', '1:1', 'Migra Datos (Acción Aceptada)', true, 280);
+            drawLine('card-solicitud', 'card-alumno', 'svg-container', '1:1', 'Migra Datos (Aceptada)', true, 280);
 
             // Alumno -> Inscripcion (Historial 1:N)
-            drawLine('card-alumno', 'card-inscripcion', 'svg-container', '1:N', 'Genera Histórico de Año Escolar', false);
+            drawLine('card-alumno', 'card-inscripcion', 'svg-container', '1:N', 'Histórico Año Escolar', false);
         }
 
         window.addEventListener('load', () => setTimeout(initConnections, 200));
